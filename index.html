@@ -455,22 +455,26 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       </div>
       <div class="card-title" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--tan)">Condivisione dati</div>
       <div class="info-box">
-        <strong style="color:var(--brown)">Come condividere con la tua compagna</strong><br><br>
-        Questo file HTML funziona <strong>offline e senza Claude</strong>. Per condividerlo:<br><br>
-        1. Clicca <strong>"Salva"</strong> in alto per scaricare un file .json con tutti i dati<br>
-        2. Invia il file .json alla tua compagna (WhatsApp, email, Drive)<br>
-        3. Lei apre questo stesso file HTML e clicca <strong>"Carica"</strong> per importare<br>
-        4. Ripetete ogni volta che volete sincronizzarvi &#9825;<br><br>
-        <strong>Suggerimento:</strong> Salvate entrambi il file HTML sul telefono per averlo sempre disponibile.
+        <strong style="color:var(--brown)">Sincronizzazione automatica via GitHub</strong><br><br>
+        I dati vengono salvati direttamente sul tuo repository GitHub e sono accessibili da qualsiasi dispositivo.<br><br>
+        • Clicca <strong>"Salva"</strong> in alto per sincronizzare le modifiche su GitHub<br>
+        • Clicca <strong>"Carica"</strong> per scaricare l'ultima versione da GitHub<br>
+        • La tua compagna apre lo stesso URL e clicca <strong>"Carica"</strong> per avere i dati aggiornati<br><br>
+        <strong style="color:var(--brown)">Repository:</strong> SFloridia/Wedding-planner<br>
+        <strong style="color:var(--brown)">File dati:</strong> planner-data.json
       </div>
       <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn" onclick="exportData()">
+        <button class="btn" onclick="syncSave()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Salva backup (.json)
+          Salva su GitHub
         </button>
-        <button class="btn-ghost" onclick="document.getElementById('import-file').click()">
+        <button class="btn-ghost" onclick="syncLoad()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Carica backup
+          Carica da GitHub
+        </button>
+        <button class="btn-ghost" onclick="exportData()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Backup locale
         </button>
         <button class="btn-pdf" onclick="printAll()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -605,6 +609,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
   loadSettings();
   renderAll();
+  ghFetchSha(); // pre-fetch SHA for GitHub overwrite
 });
 
 function saveName() {
@@ -1657,7 +1662,97 @@ function updateCoupleNames() {
 function updateWeddingDate() { state.weddingDate = document.getElementById("s-date").value; save(); }
 function updateBudgetTotal() { state.budget.total = parseFloat(document.getElementById("s-budget").value) || 0; save(); }
 
-// ── EXPORT / IMPORT ──
+// ── GITHUB SYNC ──────────────────────────────────────────────────────────────
+var GH = {
+  owner: "SFloridia",
+  repo:  "Wedding-planner",
+  token: "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",
+  file:  "planner-data.json",
+  sha:   null   // populated after first load
+};
+
+function ghHeaders() {
+  return {
+    "Authorization": "token " + GH.token,
+    "Accept": "application/vnd.github.v3+json",
+    "Content-Type": "application/json"
+  };
+}
+
+function ghApiUrl() {
+  return "https://api.github.com/repos/" + GH.owner + "/" + GH.repo + "/contents/" + GH.file;
+}
+
+// ── SAVE TO GITHUB ────────────────────────────────────────────────────────────
+function syncSave() {
+  var btn = document.getElementById("gh-save-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "Salvataggio..."; }
+  var json    = JSON.stringify(state, null, 2);
+  var encoded = btoa(unescape(encodeURIComponent(json)));
+  var body    = { message: "Aggiornamento planner " + new Date().toLocaleString("it-IT"), content: encoded };
+  if (GH.sha) body.sha = GH.sha;
+
+  fetch(ghApiUrl(), { method: "PUT", headers: ghHeaders(), body: JSON.stringify(body) })
+    .then(function(r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      GH.sha = data.content.sha;
+      trySetStorage("wp_data", JSON.stringify(state));
+      showToast("Salvato su GitHub ✓");
+      if (btn) { btn.disabled = false; btn.textContent = "Salva"; }
+    })
+    .catch(function(err) {
+      console.error(err);
+      showToast("Errore salvataggio: " + err.message);
+      if (btn) { btn.disabled = false; btn.textContent = "Salva"; }
+    });
+}
+
+// ── LOAD FROM GITHUB ──────────────────────────────────────────────────────────
+function syncLoad() {
+  var btn = document.getElementById("gh-load-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "Caricamento..."; }
+
+  fetch(ghApiUrl() + "?t=" + Date.now(), { headers: ghHeaders() })
+    .then(function(r) {
+      if (r.status === 404) throw new Error("404");
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      GH.sha = data.sha;
+      var json = decodeURIComponent(escape(atob(data.content.replace(/\n/g,""))));
+      var imported = JSON.parse(json);
+      if (imported.checklist && imported.coupleNames) {
+        state = imported;
+        trySetStorage("wp_data", JSON.stringify(state));
+        loadSettings();
+        renderAll();
+        showToast("Sincronizzato da GitHub ✓");
+      } else { throw new Error("File non valido"); }
+      if (btn) { btn.disabled = false; btn.textContent = "Carica"; }
+    })
+    .catch(function(err) {
+      if (err.message === "404") {
+        showToast("Nessun dato su GitHub ancora — fai prima un salvataggio.");
+      } else {
+        showToast("Errore caricamento: " + err.message);
+      }
+      if (btn) { btn.disabled = false; btn.textContent = "Carica"; }
+    });
+}
+
+// ── AUTO-LOAD SHA on startup (to enable overwrite) ────────────────────────────
+function ghFetchSha() {
+  fetch(ghApiUrl() + "?t=" + Date.now(), { headers: ghHeaders() })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) { if (data && data.sha) GH.sha = data.sha; })
+    .catch(function() {});
+}
+
+// ── LOCAL BACKUP (fallback) ───────────────────────────────────────────────────
 function exportData() {
   var json = JSON.stringify(state, null, 2);
   var blob = new Blob([json], {type:"application/json"});
@@ -1666,7 +1761,7 @@ function exportData() {
   var names = (state.coupleNames.p1 + "_" + state.coupleNames.p2).replace(/\s+/g,"_");
   a.download = "wedding_planner_" + names + "_" + new Date().toISOString().slice(0,10) + ".json";
   a.click();
-  showToast("Backup scaricato!");
+  showToast("Backup locale scaricato!");
 }
 function importData(event) {
   var file = event.target.files[0];
