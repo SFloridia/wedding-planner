@@ -1,0 +1,1029 @@
+{
+  "coupleNames": {
+    "p1": "Stefano",
+    "p2": "Graziana"
+  },
+  "weddingDate": "2027-06-19",
+  "budget": {
+    "total": 25000,
+    "items": [
+      {
+        "id": 1780339236423,
+        "label": "Villa Gisana (con cielo stellato 450€)",
+        "estimated": "2950",
+        "actual": "50",
+        "category": "Venue",
+        "payer": "",
+        "vat": true,
+        "subItems": [
+          {
+            "name": "Affitto Villa",
+            "est": "2500",
+            "act": "",
+            "payments": [
+              {
+                "type": "acconto",
+                "amount": "50",
+                "who": "Stefano",
+                "note": "",
+                "date": "06/06/2026"
+              },
+              {
+                "type": "acconto",
+                "amount": "200",
+                "who": "Stefano",
+                "note": "",
+                "date": "15/06/2026"
+              }
+            ]
+          },
+          {
+            "name": "Cielo Stellato",
+            "est": "450",
+            "act": ""
+          }
+        ],
+        "perHead": false
+      },
+      {
+        "id": 1780755642498,
+        "label": "Federica Vero",
+        "estimated": "",
+        "actual": "",
+        "category": "Fotografia",
+        "payer": "",
+        "vat": false,
+        "perHead": false,
+        "subItems": [
+          {
+            "name": "fotografa (1 pp)",
+            "est": "1600",
+            "act": "",
+            "payments": [
+              {
+                "type": "acconto",
+                "amount": "400",
+                "who": "Stefano",
+                "note": "",
+                "date": "16/06/2026"
+              }
+            ]
+          },
+          {
+            "name": "Album (caso peggiore, inclusi due album per le famiglie))",
+            "est": "700",
+            "act": ""
+          }
+        ]
+      },
+      {
+        "id": 1781633284716,
+        "label": "Silvia Criscione (Videografa)",
+        "estimated": "",
+        "actual": "",
+        "category": "Fotografia",
+        "payer": "",
+        "vat": false,
+        "perHead": false,
+        "subItems": [
+          {
+            "name": "servizio con drone",
+            "est": "1150",
+            "payments": [
+              {
+                "type": "acconto",
+                "amount": "250",
+                "who": "Stefano",
+                "note": "Pay pal",
+                "date": "28/06/2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1781801648654,
+        "label": "fuoriclasse",
+        "estimated": "",
+        "actual": "",
+        "category": "Catering",
+        "payer": "",
+        "vat": 10,
+        "perHead": true,
+        "subItems": [
+          {
+            "name": "accoglienza (acqua + te + latte di mandorla)",
+            "est": "3",
+            "payments": []
+          },
+          {
+            "name": "aperitivo, antipasto(buffet), due primi, dolci(buffet), torta, amari",
+            "est": "120",
+            "payments": []
+          },
+          {
+            "name": "Banco del casaro(ricotta, mozzarelle e formaggi)",
+            "est": "5",
+            "payments": []
+          }
+        ]
+      }
+    ]
+  },
+  "guests": [
+    {
+      "id": 1779825155740,
+      "name": "Claudia (mamma)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825168570,
+      "name": "Mario (papà)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825180018,
+      "name": "Alessia (sorella)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825186626,
+      "name": "Omlet",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825232562,
+      "name": "Sabina (zia)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825249332,
+      "name": "Fabio (zio)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825259983,
+      "name": "Carlo (cugino)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825285142,
+      "name": "Federica (+1 di Carlo)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825300072,
+      "name": "Alberto (cugino)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825318793,
+      "name": "Nonna Antonia",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825323402,
+      "name": "Nonno Peppe",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825386871,
+      "name": "Sara (cugina di Catania)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825396425,
+      "name": "Marito di Sara",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825439129,
+      "name": "Teresa (zia)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825444729,
+      "name": "Benito (zio)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825686379,
+      "name": "Daniele",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825702557,
+      "name": "Francesca (+1 di Daniele)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825707140,
+      "name": "Paolo",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825712926,
+      "name": "+1 di Paolo",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825719552,
+      "name": "Salvo Dima",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825728371,
+      "name": "Simone Modica",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825948311,
+      "name": "Damiano",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825961251,
+      "name": "Aprile",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779825968323,
+      "name": "Susinno",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826289520,
+      "name": "Ciccio Monaca",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826316390,
+      "name": "Gabriele Stracqua",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826415829,
+      "name": "Lollo",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826424475,
+      "name": "Simona (+1 di Lollo)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826434690,
+      "name": "Luca Baratti",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826440388,
+      "name": "+1 di Luca",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826444370,
+      "name": "Giuse",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826452653,
+      "name": "Vale (+1 di Giuse)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826457589,
+      "name": "Ema",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826460131,
+      "name": "Gigi",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826466132,
+      "name": "Wish della",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826475626,
+      "name": "Leandro (Chef)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826485944,
+      "name": "Leandro (Mister)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826508514,
+      "name": "Jonny (Maestro)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826618918,
+      "name": "Ilaria",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826628988,
+      "name": "Ric Partesotti",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826644265,
+      "name": "Ale Chierico",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826659837,
+      "name": "Cecilia",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826669968,
+      "name": "Marco (+1 di Cecilia)",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826768957,
+      "name": "Giovanni Tzamis",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826779471,
+      "name": "Ale Tzamis",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779826786472,
+      "name": "+1 di Ale Tzamis",
+      "side": "sposo",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900844808,
+      "name": "Marinella (Mamma)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900854078,
+      "name": "Gino (Papà)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900860581,
+      "name": "Manuela (sorella)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900866854,
+      "name": "Pier",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900882014,
+      "name": "Mariagra(zia)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900889153,
+      "name": "Raffaele (zio)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900918235,
+      "name": "Thomas (Cugino)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900929868,
+      "name": "Gioia (Cugina)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900951402,
+      "name": "Tiziana (zia)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900960090,
+      "name": "Marcello (zio)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900971723,
+      "name": "Totò (Cugino)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900984222,
+      "name": "Francesco (cugino)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779900992024,
+      "name": "+1 di Totò",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901002393,
+      "name": "Gianluca (zio)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901015713,
+      "name": "Eugenia(zia)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901026312,
+      "name": "Natan (cugino)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901032056,
+      "name": "Nonna",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901037762,
+      "name": "Nonno",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901118295,
+      "name": "Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901185033,
+      "name": "+1 Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901188650,
+      "name": "+1 Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901191607,
+      "name": "+1 Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901201692,
+      "name": "+1 Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901204130,
+      "name": "+1 Commare Maria",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901226673,
+      "name": "Commare Teresa",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901236935,
+      "name": "+1 Commare Teresa",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901239721,
+      "name": "+1 Commare Teresa",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901242170,
+      "name": "+1 Commare Teresa",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901254475,
+      "name": "Graziana",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901262881,
+      "name": "Massimo",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901316132,
+      "name": "Teresa Monti",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901321185,
+      "name": "Andrea",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901324829,
+      "name": "Anna",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901349976,
+      "name": "Martina Torreggiani",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901354582,
+      "name": "+1 Martina Torreggiani",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901374016,
+      "name": "Ciccia",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901381713,
+      "name": "Piero",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901416004,
+      "name": "Riccardo Gerratana",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901419096,
+      "name": "Tina",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901425879,
+      "name": "Matteo Nicit",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901479351,
+      "name": "Luciano",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901499396,
+      "name": "Eleonora Ruffini",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901524201,
+      "name": "Giulio Cerruto",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901552572,
+      "name": "Andrea (di Giulio)",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901560619,
+      "name": "Concetta",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901576428,
+      "name": "Davide",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901617731,
+      "name": "Matilde",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901621975,
+      "name": "Marco",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901684080,
+      "name": "Mariausilia Messina",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901727088,
+      "name": "Mattia (di Mariausilia)",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901766420,
+      "name": "Camilla Cecconi",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901775203,
+      "name": "Giulio Fanton",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901784790,
+      "name": "Riccardo Fanton",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901790525,
+      "name": "Giacomo Fanton",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901804392,
+      "name": "Marta Impagnatiello",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901812765,
+      "name": "Simone Impagnatiello",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901816437,
+      "name": "Rino",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901826130,
+      "name": "Francesca Bellucci",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779901837628,
+      "name": "Giuseppe (di Francesca)",
+      "side": "entrambi",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902058783,
+      "name": "Giovanni (zio)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902078562,
+      "name": "Dora (zia)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902087620,
+      "name": "Salvino (cugino)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902095058,
+      "name": "+1 di Salvino",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902103411,
+      "name": "Eleonora (cugina)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902113362,
+      "name": "Elvira (cugina)",
+      "side": "sposa",
+      "rsvp": "pending"
+    },
+    {
+      "id": 1779902120971,
+      "name": "+1 Elvira",
+      "side": "sposa",
+      "rsvp": "pending"
+    }
+  ],
+  "checklist": {
+    "Venue & Location": [
+      {
+        "id": 1,
+        "text": "Scegliere la location cerimonia",
+        "done": true,
+        "assignee": "Stefano"
+      },
+      {
+        "id": 2,
+        "text": "Scegliere la location ricevimento",
+        "done": true,
+        "assignee": "Stefano"
+      },
+      {
+        "id": 3,
+        "text": "Prenotare e firmare contratto",
+        "done": true,
+        "assignee": "Stefano"
+      },
+      {
+        "id": 4,
+        "text": "Sopralluogo finale",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Catering & Cucina": [
+      {
+        "id": 10,
+        "text": "Degustazione menu",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 11,
+        "text": "Scegliere la torta nuziale",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 12,
+        "text": "Confermare menu definitivo",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Abiti & Look": [
+      {
+        "id": 20,
+        "text": "Primo appuntamento atelier sposa",
+        "done": true,
+        "assignee": "Stefano"
+      },
+      {
+        "id": 21,
+        "text": "Scegliere abito da sposa",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 22,
+        "text": "Scegliere abito da sposo",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 23,
+        "text": "Prove finali abiti",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Fotografi & Video": [
+      {
+        "id": 30,
+        "text": "Trovare fotografo",
+        "done": true,
+        "assignee": "Stefano"
+      },
+      {
+        "id": 31,
+        "text": "Trovare videomaker",
+        "done": true,
+        "assignee": "Stefano"
+      }
+    ],
+    "Fiori & Decorazioni": [
+      {
+        "id": 40,
+        "text": "Scegliere il fiorista",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 41,
+        "text": "Definire bouquet sposa",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 42,
+        "text": "Allestimento tavoli",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Musica & Intrattenimento": [
+      {
+        "id": 50,
+        "text": "Scegliere musicisti cerimonia",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 51,
+        "text": "Scegliere DJ / band ricevimento",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Partecipazioni & Carte": [
+      {
+        "id": 60,
+        "text": "Scegliere il design",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 61,
+        "text": "Inviare save the date",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 62,
+        "text": "Inviare partecipazioni ufficiali",
+        "done": false,
+        "assignee": ""
+      },
+      {
+        "id": 1780340767487,
+        "text": "Fare il sito per gli ospiti",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Bomboniere": [
+      {
+        "id": 1781807816750,
+        "text": "scegliere il tipo di bomboniera",
+        "done": false,
+        "assignee": ""
+      }
+    ],
+    "Trasporti": [
+      {
+        "id": 1781807832587,
+        "text": "Macchina degli sposi",
+        "done": false,
+        "assignee": ""
+      }
+    ]
+  },
+  "notes": [],
+  "timeline": [
+    {
+      "id": 1,
+      "months": "12+ mesi prima",
+      "label": "Fidanzamento & Prima pianificazione",
+      "done": true
+    },
+    {
+      "id": 2,
+      "months": "10–12 mesi prima",
+      "label": "Scegliere data e location",
+      "done": true
+    },
+    {
+      "id": 3,
+      "months": "8–10 mesi prima",
+      "label": "Scegliere abiti e fornitori principali",
+      "done": false
+    },
+    {
+      "id": 4,
+      "months": "6–8 mesi prima",
+      "label": "Inviare save the date",
+      "done": false
+    },
+    {
+      "id": 5,
+      "months": "4–6 mesi prima",
+      "label": "Lista nozze e partecipazioni",
+      "done": false
+    },
+    {
+      "id": 6,
+      "months": "2–4 mesi prima",
+      "label": "Confermare tutti i fornitori",
+      "done": false
+    },
+    {
+      "id": 7,
+      "months": "1–2 mesi prima",
+      "label": "Dettagli finali e prove generali",
+      "done": false
+    },
+    {
+      "id": 8,
+      "months": "1 settimana prima",
+      "label": "Consegne e ultimi preparativi",
+      "done": false
+    },
+    {
+      "id": 9,
+      "months": "Il giorno!",
+      "label": "🎉 Il vostro giorno speciale",
+      "done": false
+    }
+  ],
+  "tables": []
+}
