@@ -94,8 +94,8 @@
                 "type": "acconto",
                 "amount": "250",
                 "who": "Stefano",
-                "note": "Pay pal",
-                "date": "28/06/2026"
+                "note": "PayPal",
+                "date": "22/06/2026"
               }
             ]
           }
@@ -111,11 +111,6 @@
         "vat": 10,
         "perHead": true,
         "subItems": [
-          {
-            "name": "accoglienza (acqua + te + latte di mandorla)",
-            "est": "3",
-            "payments": []
-          },
           {
             "name": "aperitivo, antipasto(buffet), due primi, dolci(buffet), torta, amari",
             "est": "120",
