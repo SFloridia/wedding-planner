@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wedding Planner ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf8f5;--brown-dark:#2c2416;--brown:#5a3e28;--brown-mid:#8b6340;
+  --gold:#b8966a;--gold-light:#e8c992;--tan:#f0e8dd;--border:#e0d5c8;
+  --green:#4caf80;--red:#e07070;--yellow:#c8a850;
+  --shadow:0 2px 16px rgba(44,36,22,.08);
+}
+body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--cream);color:var(--brown-dark);min-height:100vh}
+button{cursor:pointer;font-family:inherit}
+input,select,textarea{font-family:inherit}
+#header{background:linear-gradient(135deg,var(--brown-dark) 0%,#5a3e28 100%);color:#f5ede0;padding:28px 20px 20px;text-align:center;position:relative}
+#header h1{font-size:2.2rem;font-weight:300;letter-spacing:.14em}
+#header .sub{font-size:.78rem;letter-spacing:.22em;opacity:.65;text-transform:uppercase;margin-top:4px;font-family:'Jost',sans-serif}
+#countdown{background:rgba(245,237,224,.14);border-radius:14px;padding:10px 24px;display:inline-block;margin-top:14px}
+#countdown .num{font-size:2.4rem;font-weight:700;color:var(--gold-light);line-height:1}
+#countdown .lbl{font-size:.72rem;opacity:.8;letter-spacing:.15em;text-transform:uppercase;font-family:'Jost',sans-serif}
+.progress-wrap{max-width:320px;margin:12px auto 0}
+.progress-bar{background:rgba(255,255,255,.18);border-radius:99px;height:6px}
+.progress-fill{background:linear-gradient(90deg,var(--gold),#fff);height:100%;border-radius:99px;transition:width .5s}
+.progress-lbl{font-size:.72rem;opacity:.6;margin-top:4px;font-family:'Jost',sans-serif}
+.header-actions{position:absolute;top:12px;right:12px;display:flex;gap:8px}
+.header-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#f5ede0;border-radius:20px;padding:5px 12px;font-size:.7rem;letter-spacing:.06em;display:flex;align-items:center;gap:5px;font-family:'Jost',sans-serif;transition:background .2s}
+.header-btn:hover{background:rgba(255,255,255,.25)}
+#tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--border);background:#fff;padding:0 8px;scrollbar-width:none}
+#tabs::-webkit-scrollbar{display:none}
+.tab-btn{padding:13px 16px;border:none;background:none;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#aaa;border-bottom:2px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:color .2s;font-family:'Jost',sans-serif}
+.tab-btn.active{color:var(--brown);border-bottom-color:var(--brown)}
+#content{padding:20px 16px;max-width:780px;margin:0 auto}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid #f0e8dd}
+.card-title{font-size:1rem;font-weight:600;color:var(--brown);margin-bottom:14px;letter-spacing:.05em;display:flex;justify-content:space-between;align-items:center}
+.input{border:1px solid var(--border);border-radius:10px;padding:9px 13px;font-size:.9rem;width:100%;outline:none;transition:border .2s;background:#fff}
+.input:focus{border-color:var(--gold)}
+select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8966a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{background:var(--brown);color:#fff;border:none;border-radius:10px;padding:9px 18px;font-size:.85rem;letter-spacing:.05em;display:inline-flex;align-items:center;gap:6px;transition:background .2s}
+.btn:hover{background:var(--brown-dark)}
+.btn-ghost{background:transparent;color:var(--brown);border:1px solid var(--border);border-radius:10px;padding:7px 14px;font-size:.8rem;display:inline-flex;align-items:center;gap:5px;transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-pdf{background:linear-gradient(135deg,#b8966a,#8b6340);color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:.8rem;letter-spacing:.06em;display:inline-flex;align-items:center;gap:6px;font-family:'Jost',sans-serif}
+.btn-pdf:hover{opacity:.9}
+.check-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f5f0ea}
+.check-row:last-of-type{border-bottom:none}
+.checkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
+.checkbox.done{background:var(--brown);border-color:var(--brown)}
+.checkbox svg{display:none}
+.checkbox.done svg{display:block}
+.check-label{flex:1;font-size:.9rem;transition:all .2s}
+.check-label.done{text-decoration:line-through;color:#bbb}
+.check-assignee{font-size:.7rem;color:var(--gold);font-style:italic;margin-top:1px}
+.del-btn{background:none;border:none;color:#ddd;padding:4px;display:flex;align-items:center}
+.del-btn:hover{color:var(--red)}
+.add-trigger{background:none;border:none;color:var(--gold);font-size:.8rem;padding:8px 0 0;display:flex;align-items:center;gap:4px;font-family:'Jost',sans-serif;letter-spacing:.04em}
+.add-item-row{display:flex;gap:8px;margin-top:10px}
+.budget-stats{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-bottom:16px}
+.budget-stat{flex:1;text-align:center;padding:8px;min-width:100px}
+.budget-stat .val{font-size:1.5rem;font-weight:700}
+.budget-stat .lbl{font-size:.7rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-family:'Jost',sans-serif}
+.budget-row{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--tan)}
+.budget-row:last-of-type{border-bottom:none}
+.budget-cat-badge{background:var(--tan);color:var(--brown-mid);border-radius:99px;padding:2px 8px;font-size:.7rem;font-family:'Jost',sans-serif}
+.guest-stats{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.guest-stat{flex:1;text-align:center;padding:8px;min-width:80px}
+.guest-stat .val{font-size:1.8rem;font-weight:700}
+.guest-stat .lbl{font-size:.7rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-family:'Jost',sans-serif}
+.rsvp-pill{border-radius:99px;padding:3px 10px;font-size:.7rem;font-weight:600;color:#fff;cursor:pointer;font-family:'Jost',sans-serif;border:none;transition:opacity .2s}
+.rsvp-pill:hover{opacity:.8}
+.rsvp-confirmed{background:var(--green)}
+.rsvp-declined{background:var(--red)}
+.rsvp-pending{background:var(--yellow)}
+.timeline-item{display:flex;gap:14px;margin-bottom:0;align-items:flex-start}
+.tl-connector{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
+.tl-dot.done{background:var(--brown);border-color:var(--brown)}
+.tl-dot svg{display:none}
+.tl-dot.done svg{display:block}
+.tl-line{width:2px;height:24px;background:var(--tan);margin:3px auto}
+.tl-line.done{background:var(--brown)}
+.tl-months{font-size:.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;font-family:'Jost',sans-serif}
+.tl-label{font-size:.95rem;margin-top:2px;padding-bottom:12px}
+.note-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid var(--tan);box-shadow:0 1px 8px rgba(44,36,22,.05)}
+.note-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.note-author{font-size:.75rem;color:var(--gold);font-style:italic}
+.setting-group{margin-bottom:20px}
+.setting-label{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:.08em;font-family:'Jost',sans-serif;margin-bottom:6px;display:block}
+.info-box{background:var(--cream);border-radius:12px;padding:16px;font-size:.85rem;color:#888;line-height:1.7;border:1px solid var(--tan)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal-box{background:#fff;border-radius:20px;padding:32px;max-width:360px;width:100%;text-align:center}
+.modal-box h2{font-weight:300;letter-spacing:.08em;margin-bottom:8px;font-size:1.6rem}
+.modal-box p{color:#888;font-size:.88rem;margin-bottom:20px;font-family:'Jost',sans-serif}
+#sync-status{position:fixed;bottom:20px;right:20px;background:var(--brown-dark);color:#f5ede0;border-radius:20px;padding:8px 16px;font-size:.75rem;font-family:'Jost',sans-serif;opacity:0;transition:opacity .3s;box-shadow:0 4px 20px rgba(0,0,0,.2);pointer-events:none;display:flex;align-items:center;gap:6px}
+#sync-status.visible{opacity:1}
+.pdf-header-bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:12px}
+/* ── SEATING TABLES ── */
+.tables-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.table-card{background:#fff;border-radius:16px;border:1px solid var(--tan);box-shadow:var(--shadow);overflow:hidden}
+.table-card-header{
+  background:linear-gradient(135deg,var(--brown-dark),var(--brown));
+  color:#f5ede0;padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.table-card-header .t-name{font-size:.95rem;font-weight:600;letter-spacing:.05em}
+.table-card-header .t-meta{font-size:.72rem;opacity:.7;font-family:'Jost',sans-serif}
+.table-card-body{padding:14px 16px}
+.seat-row{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 0;border-bottom:1px solid var(--tan);font-size:.88rem
+}
+.seat-row:last-child{border-bottom:none}
+.seat-num{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--tan);color:var(--brown-mid);
+  font-size:.7rem;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-family:'Jost',sans-serif
+}
+.seat-name{flex:1;color:var(--brown-dark)}
+.seat-empty{color:#ccc;font-style:italic;font-size:.82rem}
+.seat-del{background:none;border:none;color:#ddd;padding:2px;display:flex;align-items:center}
+.seat-del:hover{color:var(--red)}
+.table-footer{
+  padding:10px 16px;border-top:1px solid var(--tan);
+  display:flex;align-items:center;gap:6px
+}
+.unassigned-pill{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--tan);border-radius:99px;
+  padding:3px 10px;font-size:.72rem;color:var(--brown-mid);
+  font-family:'Jost',sans-serif;cursor:pointer;border:none;
+  transition:background .2s
+}
+.unassigned-pill:hover{background:var(--border)}
+.unassigned-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  background:var(--tan);border:1px solid var(--border);
+  border-radius:99px;padding:4px 10px;font-size:.8rem;
+  margin:3px;cursor:pointer;transition:all .2s;
+}
+.unassigned-chip:hover{background:var(--brown);color:#fff;border-color:var(--brown)}
+.tables-stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.t-stat{background:#fff;border-radius:12px;padding:12px 16px;border:1px solid var(--tan);text-align:center;flex:1;min-width:90px}
+.t-stat .val{font-size:1.4rem;font-weight:700;color:var(--brown)}
+.t-stat .lbl{font-size:.68rem;color:#aaa;text-transform:uppercase;letter-spacing:.08em;font-family:'Jost',sans-serif}
+.drag-over{border:2px dashed var(--gold)!important}
+/* ── BUDGET ENHANCEMENTS ── */
+.budget-filter-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.budget-filter-btn{
+  background:var(--tan);border:1px solid var(--border);border-radius:99px;
+  padding:4px 12px;font-size:.72rem;font-family:Jost,sans-serif;
+  cursor:pointer;transition:all .2s;color:var(--brown-mid);
+}
+.budget-filter-btn.active{background:var(--brown);color:#fff;border-color:var(--brown)}
+.budget-sel-bar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--tan);border-radius:10px;padding:10px 14px;
+  margin-bottom:10px;font-size:.82rem;
+}
+.budget-sel-bar .sel-total{font-weight:600;color:var(--brown)}
+.budget-sel-bar .sel-count{color:var(--muted);font-size:.75rem}
+.brow-check{
+  width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border);
+  background:transparent;cursor:pointer;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;transition:all .15s;margin-right:4px;
+}
+.brow-check.checked{background:var(--brown);border-color:var(--brown)}
+.brow-check.checked svg{display:block}
+.brow-check svg{display:none}
+/* sub-items */
+.sub-items-wrap{padding:6px 0 2px 28px;border-top:1px dashed var(--border);margin-top:6px}
+.sub-item-row{
+  display:flex;align-items:center;gap:6px;
+  padding:4px 0;font-size:.8rem;color:var(--ink-soft);
+}
+.sub-item-name{flex:1}
+.sub-item-amt{color:var(--brown-mid);font-weight:500;white-space:nowrap}
+.sub-item-del{background:none;border:none;color:#ccc;cursor:pointer;padding:2px;display:flex;align-items:center}
+.sub-item-del:hover{color:var(--red)}
+.sub-add-row{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.sub-add-row .input{font-size:.82rem;padding:6px 10px}
+/* table type selector */
+.table-type-opt{cursor:pointer;display:inline-block}
+.table-type-opt input{display:none}
+.table-type-opt span{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 12px;border:2px solid var(--border);border-radius:12px;
+  font-size:.72rem;color:var(--muted);letter-spacing:.05em;
+  transition:all .2s;text-align:center;font-family:'Jost',sans-serif;
+}
+.table-type-opt input:checked + span{
+  border-color:var(--brown);background:var(--tan);color:var(--brown);
+}
+.table-type-opt span svg{color:var(--brown-mid)}
+/* long table layout */
+.long-table-wrap{padding:16px}
+.long-side-label{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'Jost',sans-serif;margin-bottom:6px}
+.long-seats-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.long-seat-chip{
+  display:flex;align-items:center;gap:5px;
+  background:var(--tan);border:1px solid var(--border);
+  border-radius:8px;padding:5px 10px;font-size:.8rem;
+  min-width:90px;cursor:pointer;transition:background .15s;
+}
+.long-seat-chip.occupied{background:var(--brown);color:#fff;border-color:var(--brown)}
+.long-seat-chip.occupied .lsc-num{background:rgba(255,255,255,.2);color:#fff}
+.long-seat-chip:not(.occupied):hover{background:var(--border)}
+.lsc-num{font-size:.68rem;background:var(--border);border-radius:4px;padding:1px 5px;font-family:'Jost',sans-serif;flex-shrink:0}
+.imperial-divider{border:none;border-top:3px solid var(--brown-dark);margin:10px 0;opacity:.15;border-radius:2px}
+/* table type badge */
+.t-type-badge{font-size:.65rem;background:rgba(255,255,255,.18);border-radius:99px;padding:2px 8px;font-family:'Jost',sans-serif;margin-left:6px;opacity:.8}
+
+@media print {
+  body{background:#fff}
+  #header{background:#2c2416 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #tabs,#sync-status,.no-print,.header-actions,.del-btn,.btn,.btn-ghost,.btn-pdf,.add-trigger,.pdf-header-bar{display:none!important}
+  .tab-panel{display:block!important}
+  .card{break-inside:avoid;box-shadow:none;border:1px solid #e0d5c8;page-break-inside:avoid}
+  .progress-fill{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .section-print-title{font-size:1.4rem;font-weight:600;color:var(--brown);letter-spacing:.1em;margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--tan);display:block}
+  @page{margin:2cm;size:A4}
+}
+@media screen{.section-print-title{display:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<div class="modal-overlay" id="modal-name" style="display:none">
+  <div class="modal-box">
+    <div style="color:#e8c992;font-size:2.5rem;margin-bottom:8px">&#9825;</div>
+    <h2>Chi sei?</h2>
+    <p>Inserisci il tuo nome per identificarti nelle modifiche condivise</p>
+    <input class="input" id="modal-name-input" placeholder="Il tuo nome" style="text-align:center;font-size:1rem;margin-bottom:16px" />
+    <button class="btn" style="width:100%;padding:12px;justify-content:center" onclick="saveName()">Entra nel planner &#9825;</button>
+    <button onclick="closeModal()" style="background:none;border:none;color:#aaa;font-size:.85rem;margin-top:12px;cursor:pointer;font-family:inherit;display:block;width:100%">Salta per ora</button>
+  </div>
+</div>
+
+<div id="header">
+  <div class="header-actions no-print">
+    <button class="header-btn" onclick="exportData()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Salva
+    </button>
+    <button class="header-btn" onclick="document.getElementById('import-file').click()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Carica
+    </button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)" />
+  </div>
+  <div style="font-size:1.4rem;margin-bottom:4px">&#9825;</div>
+  <h1 id="header-title">Vostro Wedding Planner</h1>
+  <p class="sub">Piano del Matrimonio</p>
+  <div id="countdown" style="display:none">
+    <div class="num" id="days-num">-</div>
+    <div class="lbl" id="days-lbl">giorni al matrimonio</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="main-progress" style="width:0%"></div></div>
+    <div class="progress-lbl" id="progress-lbl">0 / 0 attivita completate</div>
+  </div>
+</div>
+
+<div id="tabs">
+  <button class="tab-btn active" onclick="showTab('checklist',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    Checklist
+  </button>
+  <button class="tab-btn" onclick="showTab('budget',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    Budget
+  </button>
+  <button class="tab-btn" onclick="showTab('guests',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Ospiti
+  </button>
+  <button class="tab-btn" onclick="showTab('timeline',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Timeline
+  </button>
+  <button class="tab-btn" onclick="showTab('notes',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Note
+  </button>
+  <button class="tab-btn" onclick="showTab('tables',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Tavoli
+  </button>
+  <button class="tab-btn" onclick="showTab('settings',this)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M6.34 17.66l-1.41 1.41M20 12h-2M6 12H4M17.66 17.66l-1.41-1.41M6.34 6.34L4.93 4.93M12 20v-2M12 6V4"/></svg>
+    Impostazioni
+  </button>
+</div>
+
+<div id="content">
+  <div class="tab-panel active" id="panel-checklist">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-checklist','Checklist Matrimonio')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Esporta PDF
+      </button>
+    </div>
+    <div id="checklist-container"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-budget">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-budget','Budget Matrimonio')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        PDF
+      </button>
+      <button class="btn-pdf" onclick="exportBudgetXLSX()" style="background:linear-gradient(135deg,#1d6f42,#2d9e5e)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+        Excel (.xlsx)
+      </button>
+    </div>
+    <div id="budget-container"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-guests">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-guests','Lista Ospiti Matrimonio')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Esporta PDF
+      </button>
+    </div>
+    <div id="guests-container"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-timeline">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-timeline','Timeline Matrimonio')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Esporta PDF
+      </button>
+    </div>
+    <div id="timeline-container"></div>
+  </div>
+
+  <div class="tab-panel" id="panel-notes">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-notes','Note Matrimonio')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Esporta PDF
+      </button>
+    </div>
+    <div id="notes-container"></div>
+    <div class="card no-print">
+      <div class="card-title">Nuova nota</div>
+      <textarea class="input" id="new-note" rows="3" placeholder="Scrivi una nota condivisa..." style="resize:vertical"></textarea>
+      <div style="margin-top:10px">
+        <button class="btn" onclick="addNote()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Pubblica nota
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-tables">
+    <div class="pdf-header-bar no-print">
+      <button class="btn-pdf" onclick="printSection('panel-tables','Disposizione Tavoli')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        PDF
+      </button>
+      <button class="btn-pdf" onclick="exportTablesDoc()" style="background:linear-gradient(135deg,#4a8a4a,#2d6a2d)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+        Documento coordinatore
+      </button>
+    </div>
+    <div id="tables-stats" class="tables-stats"></div>
+    <!-- Unassigned guests -->
+    <div class="card no-print" id="unassigned-card">
+      <div class="card-title">
+        <span>Ospiti senza tavolo</span>
+        <span id="unassigned-count" style="font-size:.8rem;color:var(--gold);font-weight:400"></span>
+      </div>
+      <div id="unassigned-list" style="display:flex;flex-wrap:wrap;gap:4px;min-height:32px"></div>
+    </div>
+    <!-- Tables grid -->
+    <div class="tables-grid" id="tables-grid"></div>
+    <!-- Add table form -->
+    <div class="card no-print">
+      <div class="card-title">Aggiungi tavolo</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <input class="input" id="t-name" placeholder="Nome (es. Tavolo degli sposi)" style="flex:2;min-width:160px" />
+        <input class="input" id="t-seats" type="number" min="1" max="200" placeholder="N° posti" style="flex:1;min-width:80px" />
+      </div>
+      <div style="margin-bottom:10px">
+        <label class="setting-label" style="margin-bottom:6px;display:block">Tipo di tavolo</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <label class="table-type-opt">
+            <input type="radio" name="t-type" value="round" checked />
+            <span>
+              <svg width="28" height="28" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="4" r="2.5" fill="currentColor" opacity=".5"/><circle cx="24.5" cy="7.5" r="2.5" fill="currentColor" opacity=".5"/><circle cx="28" cy="16" r="2.5" fill="currentColor" opacity=".5"/><circle cx="24.5" cy="24.5" r="2.5" fill="currentColor" opacity=".5"/><circle cx="16" cy="28" r="2.5" fill="currentColor" opacity=".5"/><circle cx="7.5" cy="24.5" r="2.5" fill="currentColor" opacity=".5"/><circle cx="4" cy="16" r="2.5" fill="currentColor" opacity=".5"/><circle cx="7.5" cy="7.5" r="2.5" fill="currentColor" opacity=".5"/></svg>
+              Rotondo
+            </span>
+          </label>
+          <label class="table-type-opt">
+            <input type="radio" name="t-type" value="long" />
+            <span>
+              <svg width="28" height="28" viewBox="0 0 32 32"><rect x="2" y="12" width="28" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="8" r="2.2" fill="currentColor" opacity=".5"/><circle cx="13" cy="8" r="2.2" fill="currentColor" opacity=".5"/><circle cx="20" cy="8" r="2.2" fill="currentColor" opacity=".5"/><circle cx="27" cy="8" r="2.2" fill="currentColor" opacity=".5"/><circle cx="6" cy="24" r="2.2" fill="currentColor" opacity=".5"/><circle cx="13" cy="24" r="2.2" fill="currentColor" opacity=".5"/><circle cx="20" cy="24" r="2.2" fill="currentColor" opacity=".5"/><circle cx="27" cy="24" r="2.2" fill="currentColor" opacity=".5"/></svg>
+              Tavolata unica
+            </span>
+          </label>
+          <label class="table-type-opt">
+            <input type="radio" name="t-type" value="imperial" />
+            <span>
+              <svg width="28" height="28" viewBox="0 0 32 32"><rect x="2" y="12" width="28" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="7" r="2.2" fill="currentColor" opacity=".5"/><circle cx="9" cy="7" r="2.2" fill="currentColor" opacity=".5"/><circle cx="23" cy="7" r="2.2" fill="currentColor" opacity=".5"/><circle cx="3" cy="16" r="2.2" fill="currentColor" opacity=".5"/><circle cx="29" cy="16" r="2.2" fill="currentColor" opacity=".5"/><circle cx="16" cy="25" r="2.2" fill="currentColor" opacity=".5"/><circle cx="9" cy="25" r="2.2" fill="currentColor" opacity=".5"/><circle cx="23" cy="25" r="2.2" fill="currentColor" opacity=".5"/></svg>
+              Imperiale
+            </span>
+          </label>
+        </div>
+      </div>
+      <button class="btn" onclick="addTable()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Aggiungi tavolo
+      </button>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-settings">
+    <div class="card">
+      <div class="card-title">Impostazioni</div>
+      <div class="setting-group">
+        <label class="setting-label">Il tuo nome (dispositivo corrente)</label>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <input class="input" id="s-myname" placeholder="Il tuo nome" style="flex:1" />
+          <button class="btn-ghost" onclick="saveMyName()">Salva</button>
+        </div>
+      </div>
+      <div class="setting-group">
+        <label class="setting-label">Nome Sposo/a 1</label>
+        <input class="input" id="s-p1" placeholder="Nome" oninput="updateCoupleNames()" />
+      </div>
+      <div class="setting-group">
+        <label class="setting-label">Nome Sposo/a 2</label>
+        <input class="input" id="s-p2" placeholder="Nome" oninput="updateCoupleNames()" />
+      </div>
+      <div class="setting-group">
+        <label class="setting-label">Data del matrimonio</label>
+        <input class="input" type="date" id="s-date" onchange="updateWeddingDate()" />
+      </div>
+      <div class="setting-group">
+        <label class="setting-label">Budget totale (euro)</label>
+        <input class="input" type="number" id="s-budget" placeholder="es. 20000" onchange="updateBudgetTotal()" />
+      </div>
+      <div class="card-title" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--tan)">Condivisione dati</div>
+      <div class="info-box">
+        <strong style="color:var(--brown)">Sincronizzazione automatica via GitHub</strong><br><br>
+        I dati vengono salvati direttamente sul tuo repository GitHub e sono accessibili da qualsiasi dispositivo.<br><br>
+        • Clicca <strong>"Salva"</strong> in alto per sincronizzare le modifiche su GitHub<br>
+        • Clicca <strong>"Carica"</strong> per scaricare l'ultima versione da GitHub<br>
+        • La tua compagna apre lo stesso URL e clicca <strong>"Carica"</strong> per avere i dati aggiornati<br><br>
+        <strong style="color:var(--brown)">Repository:</strong> SFloridia/Wedding-planner<br>
+        <strong style="color:var(--brown)">File dati:</strong> planner-data.json
+      </div>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" onclick="syncSave()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Salva su GitHub
+        </button>
+        <button class="btn-ghost" onclick="syncLoad()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Carica da GitHub
+        </button>
+        <button class="btn-ghost" onclick="exportData()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Backup locale
+        </button>
+        <button class="btn-pdf" onclick="printAll()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Esporta tutto PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ASSIGN MODAL -->
+<div id="assign-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:20px;padding:28px;max-width:400px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.2)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <h3 id="assign-modal-title" style="font-size:1rem;font-weight:600;color:var(--brown)"></h3>
+      <button onclick="closeAssignModal()" style="background:none;border:none;color:#aaa;font-size:1.2rem;cursor:pointer;line-height:1">&times;</button>
+    </div>
+    <div id="assign-modal-list"></div>
+  </div>
+</div>
+
+<div id="sync-status">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="sync-msg">Salvato</span>
+</div>
+
+<script>
+// ── UTILITY HELPERS (must be first) ──────────────────────────────────────────
+function escHtml(s) {
+  if (!s && s !== 0) return '';
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+function escAttr(s) {
+  return String(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+}
+
+
+var DEFAULT_DATA = {
+  coupleNames: {p1:"Sposo", p2:"Sposa"},
+  weddingDate: "",
+  budget: {total: 20000, items: []},
+  guests: [],
+  checklist: {
+    "Venue & Location": [
+      {id:1, text:"Scegliere la location cerimonia", done:false, assignee:""},
+      {id:2, text:"Scegliere la location ricevimento", done:false, assignee:""},
+      {id:3, text:"Prenotare e firmare contratto", done:false, assignee:""},
+      {id:4, text:"Sopralluogo finale", done:false, assignee:""}
+    ],
+    "Catering & Cucina": [
+      {id:10, text:"Degustazione menu", done:false, assignee:""},
+      {id:11, text:"Scegliere la torta nuziale", done:false, assignee:""},
+      {id:12, text:"Confermare menu definitivo", done:false, assignee:""}
+    ],
+    "Abiti & Look": [
+      {id:20, text:"Primo appuntamento atelier sposa", done:false, assignee:""},
+      {id:21, text:"Scegliere abito da sposa", done:false, assignee:""},
+      {id:22, text:"Scegliere abito da sposo", done:false, assignee:""},
+      {id:23, text:"Prove finali abiti", done:false, assignee:""}
+    ],
+    "Fotografi & Video": [
+      {id:30, text:"Trovare fotografo", done:false, assignee:""},
+      {id:31, text:"Trovare videomaker", done:false, assignee:""},
+      {id:32, text:"Engagement shoot", done:false, assignee:""}
+    ],
+    "Fiori & Decorazioni": [
+      {id:40, text:"Scegliere il fiorista", done:false, assignee:""},
+      {id:41, text:"Definire bouquet sposa", done:false, assignee:""},
+      {id:42, text:"Allestimento tavoli", done:false, assignee:""}
+    ],
+    "Musica & Intrattenimento": [
+      {id:50, text:"Scegliere musicisti cerimonia", done:false, assignee:""},
+      {id:51, text:"Scegliere DJ / band ricevimento", done:false, assignee:""}
+    ],
+    "Partecipazioni & Carte": [
+      {id:60, text:"Scegliere il design", done:false, assignee:""},
+      {id:61, text:"Inviare save the date", done:false, assignee:""},
+      {id:62, text:"Inviare partecipazioni ufficiali", done:false, assignee:""}
+    ],
+    "Luna di Miele": [
+      {id:70, text:"Scegliere destinazione", done:false, assignee:""},
+      {id:71, text:"Prenotare voli", done:false, assignee:""},
+      {id:72, text:"Prenotare hotel", done:false, assignee:""}
+    ]
+  },
+  notes: [],
+  tables: [],
+  timeline: [
+    {id:1, months:"12+ mesi prima", label:"Fidanzamento & Prima pianificazione", done:false},
+    {id:2, months:"10-12 mesi prima", label:"Scegliere data e location", done:false},
+    {id:3, months:"8-10 mesi prima", label:"Scegliere abiti e fornitori principali", done:false},
+    {id:4, months:"6-8 mesi prima", label:"Inviare save the date", done:false},
+    {id:5, months:"4-6 mesi prima", label:"Lista nozze e partecipazioni", done:false},
+    {id:6, months:"2-4 mesi prima", label:"Confermare tutti i fornitori", done:false},
+    {id:7, months:"1-2 mesi prima", label:"Dettagli finali e prove generali", done:false},
+    {id:8, months:"1 settimana prima", label:"Consegne e ultimi preparativi", done:false},
+    {id:9, months:"Il giorno!", label:"Il vostro giorno speciale", done:false}
+  ]
+};
+
+var state = JSON.parse(JSON.stringify(DEFAULT_DATA));
+var myName = "";
+var lastGuestSide = "sposo";
+
+// ── STORAGE HELPERS ──
+function tryGetStorage(key) {
+  try { return localStorage.getItem(key); } catch(e) { return null; }
+}
+function trySetStorage(key, val) {
+  try { localStorage.setItem(key, val); } catch(e) {}
+}
+
+// ── INIT ──
+window.addEventListener("DOMContentLoaded", function() {
+  var stored = tryGetStorage("wp_data");
+  if (stored) {
+    try { state = JSON.parse(stored); } catch(e) {}
+  }
+  var savedName = tryGetStorage("wp_myname") || "";
+  if (savedName) {
+    myName = savedName;
+  } else {
+    document.getElementById("modal-name").style.display = "flex";
+    document.getElementById("modal-name-input").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") saveName();
+    });
+  }
+  loadSettings();
+  renderAll();
+  ghFetchSha(); // pre-fetch SHA for GitHub overwrite
+});
+
+function saveName() {
+  var v = document.getElementById("modal-name-input").value.trim();
+  if (v) {
+    myName = v;
+    trySetStorage("wp_myname", v);
+    var sn = document.getElementById("s-myname");
+    if (sn) sn.value = v;
+  }
+  document.getElementById("modal-name").style.display = "none";
+}
+
+function closeModal() {
+  document.getElementById("modal-name").style.display = "none";
+}
+
+function saveMyName() {
+  var v = document.getElementById("s-myname").value.trim();
+  if (!v) return;
+  myName = v;
+  trySetStorage("wp_myname", v);
+  showToast("Nome salvato");
+}
+
+// ── SAVE / TOAST ──
+function save() {
+  trySetStorage("wp_data", JSON.stringify(state));
+  showToast("Salvato");
+  renderAll();
+}
+function saveQuiet() {
+  // save + re-render only budget, keeping panels open
+  trySetStorage("wp_data", JSON.stringify(state));
+  showToast("Salvato");
+  renderHeader();
+  renderBudget();
+}
+
+function showToast(msg) {
+  var el = document.getElementById("sync-status");
+  document.getElementById("sync-msg").textContent = msg;
+  el.classList.add("visible");
+  clearTimeout(el._t);
+  el._t = setTimeout(function() { el.classList.remove("visible"); }, 2000);
+}
+
+// ── TABS ──
+function showTab(id, btn) {
+  document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.remove("active"); });
+  document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+  document.getElementById("panel-" + id).classList.add("active");
+  btn.classList.add("active");
+}
+
+// ── RENDER ALL ──
+function renderAll() {
+  renderHeader();
+  renderChecklist();
+  renderBudget();
+  renderGuests();
+  renderTables();
+  renderTimeline();
+  renderNotes();
+}
+
+// ── HEADER ──
+function renderHeader() {
+  var p1 = state.coupleNames.p1;
+  var p2 = state.coupleNames.p2;
+  document.getElementById("header-title").textContent = p1 + " & " + p2;
+  var cd = document.getElementById("countdown");
+  if (state.weddingDate) {
+    var diff = Math.ceil((new Date(state.weddingDate) - new Date()) / 86400000);
+    cd.style.display = "inline-block";
+    if (diff > 0) {
+      document.getElementById("days-num").textContent = diff;
+      document.getElementById("days-lbl").textContent = "giorni al matrimonio";
+    } else if (diff === 0) {
+      document.getElementById("days-num").textContent = "Oggi!";
+      document.getElementById("days-lbl").textContent = "E' il vostro giorno!";
+    } else {
+      document.getElementById("days-num").textContent = "♡";
+      document.getElementById("days-lbl").textContent = "Matrimonio celebrato";
+    }
+  } else {
+    cd.style.display = "none";
+  }
+  var all = [];
+  Object.values(state.checklist).forEach(function(items) { all = all.concat(items); });
+  var done = all.filter(function(i) { return i.done; }).length;
+  var pct = all.length ? Math.round(done / all.length * 100) : 0;
+  document.getElementById("main-progress").style.width = pct + "%";
+  document.getElementById("progress-lbl").textContent = done + " / " + all.length + " attivita completate - " + pct + "%";
+}
+
+// ── CHECKLIST ──
+function renderChecklist() {
+  var container = document.getElementById("checklist-container");
+  var html = "";
+  var allItems = Object.values(state.checklist).flat();
+  var done = allItems.filter(function(i){ return i.done; }).length;
+  Object.entries(state.checklist).forEach(function(entry) {
+    var cat = entry[0], items = entry[1];
+    var catDone = items.filter(function(i){ return i.done; }).length;
+    html += '<div class="card">';
+    html += '<div class="card-title">';
+    html += '<span>' + escHtml(cat) + '</span>';
+    html += '<div style="display:flex;align-items:center;gap:8px">';
+    html += '<span style="font-size:.8rem;color:var(--gold);font-weight:400">'+catDone+'/'+items.length+'</span>';
+    html += '<button class="del-btn no-print" title="Elimina categoria" onclick="deleteCheckCategory(\''+escAttr(cat)+'\')" style="color:#ddd"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+    html += '</div></div>';
+    items.forEach(function(item) {
+      html += '<div class="check-row"><div class="checkbox '+(item.done?'done':'')+'" onclick="toggleCheck(\''+escAttr(cat)+'\','+item.id+')">';
+      html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>';
+      html += '<div style="flex:1"><div class="check-label '+(item.done?'done':'')+'">'+escHtml(item.text)+'</div>';
+      if (item.assignee) html += '<div class="check-assignee">\u2713 '+escHtml(item.assignee)+'</div>';
+      html += '</div>';
+      html += '<button class="del-btn no-print" onclick="deleteCheck(\''+escAttr(cat)+'\','+item.id+')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+      html += '</div>';
+    });
+    // add item row
+    html += '<div class="no-print" id="add-area-'+escAttr(cat)+'">';
+    html += '<button class="add-trigger" onclick="showAddItem(\''+escAttr(cat)+'\')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Aggiungi attività</button>';
+    html += '</div>';
+    html += '</div>';
+  });
+
+  // add new category
+  html += '<div class="card no-print">';
+  html += '<div class="card-title">Nuova categoria</div>';
+  html += '<div style="display:flex;gap:8px">';
+  html += '<input class="input" id="new-cat-name" placeholder="Es. Trasporti, Fiori..." style="flex:1"/>';
+  html += '<button class="btn" onclick="addCheckCategory()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Aggiungi</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+}
+
+function escAttr(s) { return String(s).replace(/'/g,"\\'"); }
+
+function showAddItem(cat) {
+  var area = document.getElementById("add-area-"+cat);
+  if (!area) return;
+  area.innerHTML = '<div class="add-item-row"><input class="input" id="new-item-'+cat+'" placeholder="Nuova attività..." style="flex:1"/><button class="btn" onclick="addCheck(\''+escAttr(cat)+'\')">+</button><button class="btn-ghost" onclick="renderChecklist()">✕</button></div>';
+  setTimeout(function(){
+    var el = document.getElementById("new-item-"+cat);
+    if (el) { el.focus(); el.addEventListener("keydown", function(e){ if(e.key==="Enter") addCheck(cat); if(e.key==="Escape") renderChecklist(); }); }
+  },50);
+}
+
+function toggleCheck(cat, id) {
+  var item = state.checklist[cat] && state.checklist[cat].find(function(i){ return i.id===id; });
+  if (!item) return;
+  item.done = !item.done;
+  if (item.done) item.assignee = myName;
+  save();
+}
+function deleteCheck(cat, id) {
+  if (!state.checklist[cat]) return;
+  state.checklist[cat] = state.checklist[cat].filter(function(i){ return i.id!==id; });
+  save();
+}
+function addCheck(cat) {
+  var el = document.getElementById("new-item-"+cat);
+  if (!el||!el.value.trim()) return;
+  if (!state.checklist[cat]) state.checklist[cat] = [];
+  state.checklist[cat].push({id:Date.now(),text:el.value.trim(),done:false,assignee:""});
+  save();
+}
+function addCheckCategory() {
+  var el = document.getElementById("new-cat-name");
+  if (!el||!el.value.trim()) return;
+  var name = el.value.trim();
+  if (state.checklist[name]) { alert("Categoria già esistente."); return; }
+  state.checklist[name] = [];
+  save();
+}
+function deleteCheckCategory(cat) {
+  if (!confirm("Eliminare la categoria \""+cat+"\" e tutte le sue attività?")) return;
+  delete state.checklist[cat];
+  save();
+}
+
+// ── BUDGET ──
+var budgetFilter   = "";
+var budgetSelected = {};
+var IVA_RATE       = 0.22;   // fixed 22%
+
+function fmt(n) {
+  return "\u20ac" + (parseFloat(n)||0).toLocaleString("it-IT",{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function addVat(v, rate) {
+  var r = (rate === 10) ? 1.10 : 1.22;
+  return Math.round(v * r * 100) / 100;
+}
+function guestCount() {
+  var conf = state.guests.filter(function(g){ return g.rsvp==="confirmed"; }).length;
+  return conf > 0 ? conf : state.guests.length;
+}
+function perHead(p) { return Math.round(parseFloat(p) * guestCount() * 100) / 100; }
+
+// Compute estimated and paid totals for one item.
+// IVA applies ONLY to the estimated amount, never to paid.
+function itemTotals(item) {
+  var est = 0, paid = 0;
+  if (item.subItems && item.subItems.length > 0) {
+    item.subItems.forEach(function(si) {
+      est  += parseFloat(si.est) || 0;
+      // sum all payments across all payment records for this sub-item
+      if (si.payments && si.payments.length > 0) {
+        si.payments.forEach(function(p){ paid += parseFloat(p.amount) || 0; });
+      } else {
+        paid += parseFloat(si.act) || 0; // backward compat
+      }
+    });
+  } else {
+    est  = parseFloat(item.estimated) || 0;
+    paid = parseFloat(item.actual)    || 0;
+  }
+  if (item.perHead) { est = perHead(est); }  // multiply estimated by guest count
+  // paid is NEVER multiplied — payments are always total amounts entered by the user
+  if (item.vat)     { est = addVat(est, item.vat); }   // IVA only on estimated
+  return { est: est, paid: paid, residuo: est - paid };
+}
+
+function setBudgetFilter(cat) { budgetFilter = cat; renderBudget(); }
+function toggleBudgetSelect(id) {
+  var key = String(id);
+  if (budgetSelected[key]) delete budgetSelected[key]; else budgetSelected[key] = true;
+  renderBudget();
+}
+function clearBudgetSelection() { budgetSelected = {}; renderBudget(); }
+function selectAll() {
+  state.budget.items.forEach(function(i){ budgetSelected[String(i.id)] = true; });
+  renderBudget();
+}
+
+function renderBudget() {
+  var container = document.getElementById("budget-container");
+  if (!container) return;
+  var gc = guestCount();
+  var cats      = ["","Venue","Catering","Abiti","Fotografia","Fiori","Musica","Partecipazioni","Luna di miele","Altro"];
+  var catLabels = ["Tutti","Venue","Catering","Abiti","Fotografia","Fiori","Musica","Partecipazioni","Luna di miele","Altro"];
+
+  // grand totals
+  var grandEst  = 0, grandPaid = 0;
+  state.budget.items.forEach(function(i){ var t=itemTotals(i); grandEst+=t.est; grandPaid+=t.paid; });
+  var grandResiduo = grandEst - grandPaid;
+  var pct = state.budget.total ? Math.min(100, Math.round(grandPaid / state.budget.total * 100)) : 0;
+
+  var html = "";
+
+  // ── SUMMARY CARD ──
+  html += '<div class="card"><div class="budget-stats">';
+  html += '<div class="budget-stat"><div class="val" style="color:var(--brown)">'     + fmt(state.budget.total) + '</div><div class="lbl">Budget</div></div>';
+  html += '<div class="budget-stat"><div class="val" style="color:var(--gold)">'      + fmt(grandEst)  + '</div><div class="lbl">Preventivato</div></div>';
+  html += '<div class="budget-stat"><div class="val" style="color:var(--green)">'     + fmt(grandPaid) + '</div><div class="lbl">Pagato</div></div>';
+  var disp = state.budget.total - grandEst;
+  html += '<div class="budget-stat"><div class="val" style="color:' + (disp<0?'var(--red)':'var(--muted)') + '">' + fmt(Math.abs(disp)) + '</div><div class="lbl">' + (disp<0?'Sforamento':'Disponibile') + '</div></div>';
+  html += '<div class="budget-stat"><div class="val" style="color:' + (grandResiduo>0?'var(--red)':'var(--green)') + '">' + fmt(Math.abs(grandResiduo)) + '</div><div class="lbl">' + (grandResiduo>0?'Da pagare':'Saldato \u2714') + '</div></div>';
+  html += '</div>';
+  html += '<div class="progress-bar" style="height:10px;margin-top:10px"><div class="progress-fill" style="width:' + pct + '%;background:linear-gradient(90deg,var(--gold),var(--brown))"></div></div>';
+  html += '<div style="text-align:right;font-size:.72rem;color:#aaa;margin-top:4px">' + pct + '% del budget pagato</div></div>';
+
+  // ── SELECTION SUMMARY ──
+  var selItems = state.budget.items.filter(function(i){ return !!budgetSelected[String(i.id)]; });
+  if (selItems.length > 0) {
+    var selEst=0, selPaid=0;
+    selItems.forEach(function(i){ var t=itemTotals(i); selEst+=t.est; selPaid+=t.paid; });
+    html += '<div class="card" style="border:2px solid var(--gold);background:var(--warm-pale)">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">';
+    html += '<span style="font-size:.78rem;font-weight:600;color:var(--brown);text-transform:uppercase;letter-spacing:.05em">' + selItems.length + ' ' + (selItems.length===1?'voce selezionata':'voci selezionate') + '</span>';
+    html += '<button class="btn-ghost no-print" onclick="clearBudgetSelection()" style="font-size:.72rem;padding:3px 10px">Deseleziona</button>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:24px;flex-wrap:wrap">';
+    html += '<div><div style="font-size:1.15rem;font-weight:700;color:var(--gold)">' + fmt(selEst) + '</div><div style="font-size:.68rem;color:#aaa;text-transform:uppercase;letter-spacing:.06em">Preventivo</div></div>';
+    html += '<div><div style="font-size:1.15rem;font-weight:700;color:var(--green)">' + fmt(selPaid) + '</div><div style="font-size:.68rem;color:#aaa;text-transform:uppercase;letter-spacing:.06em">Pagato</div></div>';
+    html += '<div><div style="font-size:1.15rem;font-weight:700;color:' + (selEst-selPaid>0?'var(--red)':'var(--green)') + '">' + fmt(Math.abs(selEst-selPaid)) + '</div><div style="font-size:.68rem;color:#aaa;text-transform:uppercase;letter-spacing:.06em">Residuo</div></div>';
+    html += '</div>';
+    html += '<div style="margin-top:10px">';
+    selItems.forEach(function(i){ html += '<span style="display:inline-block;background:var(--tan);border-radius:99px;padding:2px 8px;margin:2px;font-size:.7rem">' + escHtml(i.label) + '</span>'; });
+    html += '</div></div>';
+  }
+
+  // ── FILTER BAR ──
+  html += '<div class="card no-print" style="padding:12px 16px">';
+  html += '<div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">';
+  html += '<span style="font-size:.7rem;color:#aaa;letter-spacing:.08em;text-transform:uppercase;margin-right:2px;flex-shrink:0">Filtra:</span>';
+  cats.forEach(function(cat,i){
+    var active = budgetFilter === cat;
+    html += '<button onclick="setBudgetFilter(\'' + cat + '\')" style="border:1px solid ' + (active?'var(--brown)':'var(--border)') + ';background:' + (active?'var(--brown)':'transparent') + ';color:' + (active?'#fff':'var(--muted)') + ';border-radius:99px;padding:3px 10px;font-size:.7rem;cursor:pointer;font-family:inherit;transition:all .15s">' + catLabels[i] + '</button>';
+  });
+  html += '<button onclick="selectAll()" style="margin-left:auto;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:99px;padding:3px 10px;font-size:.7rem;cursor:pointer;font-family:inherit">Seleziona tutti</button>';
+  html += '</div></div>';
+
+  // ── ITEMS LIST ──
+  var visItems = budgetFilter ? state.budget.items.filter(function(i){ return i.category===budgetFilter; }) : state.budget.items;
+  html += '<div class="card">';
+  html += '<div class="card-title"><span>Voci di spesa' + (budgetFilter?' \u2014 '+budgetFilter:'') + '</span>';
+  html += '<span style="font-size:.8rem;color:var(--gold);font-weight:400">' + visItems.length + ' voci</span></div>';
+  if (visItems.length === 0) { html += '<p style="color:#bbb;font-size:.9rem">Nessuna voce per questa categoria.</p>'; }
+
+  visItems.forEach(function(item) {
+    var t = itemTotals(item);
+    var isSelected = !!budgetSelected[String(item.id)];
+    var hasSub     = item.subItems && item.subItems.length > 0;
+    var vatTag  = item.vat     ? '<span style="background:#f0e8dd;color:var(--brown-mid);border-radius:99px;padding:1px 6px;font-size:.65rem;margin-left:4px">IVA '+item.vat+'%</span>' : '';
+    var phTag   = item.perHead ? '<span style="background:#e8f4e8;color:#4a8a4a;border-radius:99px;padding:1px 6px;font-size:.65rem;margin-left:3px">\xd7' + gc + ' ospiti</span>' : '';
+    var subTag  = hasSub       ? '<span style="background:#e8f0f5;color:#5a87a0;border-radius:99px;padding:1px 6px;font-size:.65rem;margin-left:3px">' + item.subItems.length + ' voci</span>' : '';
+    var selStyle = isSelected  ? 'border-left:3px solid var(--gold);background:var(--warm-pale);border-radius:8px;padding-left:8px;margin-left:-8px;' : '';
+
+    html += '<div id="brow-' + item.id + '" style="' + selStyle + '">';
+
+    // ── DISPLAY ROW ──
+    html += '<div class="budget-row" style="align-items:flex-start">';
+    // checkbox
+    html += '<div class="no-print" style="margin-right:8px;margin-top:3px;flex-shrink:0"><input type="checkbox"' + (isSelected?' checked':'') + ' onchange="toggleBudgetSelect(' + item.id + ')" style="width:16px;height:16px;accent-color:var(--brown);cursor:pointer"/></div>';
+    // label
+    html += '<div style="flex:1;min-width:0">';
+    html += '<div style="font-size:.9rem;font-weight:600">' + escHtml(item.label) + vatTag + phTag + subTag + '</div>';
+    html += '<span class="budget-cat-badge">' + escHtml(item.category) + '</span>';
+    if (item.payer) html += '<div style="font-size:.7rem;color:var(--gold);font-style:italic;margin-top:1px">Paga: ' + escHtml(item.payer) + '</div>';
+    html += '</div>';
+    // amounts
+    html += '<div style="text-align:right;font-size:.83rem;margin:0 6px;flex-shrink:0">';
+    if (t.est)  html += '<div style="color:#999">Prev: ' + fmt(t.est) + '</div>';
+    if (t.paid > 0) {
+      html += '<div style="color:var(--green);font-weight:600">Pagato: ' + fmt(t.paid) + '</div>';
+      if (t.est > 0) {
+        html += '<div style="font-size:.76rem;color:' + (t.residuo>0?'var(--red)':'var(--green)') + '">' +
+          (t.residuo>0 ? 'Residuo: '+fmt(t.residuo) : 'Saldato \u2714') + '</div>';
+      }
+    } else {
+      html += '<div style="color:#ccc;font-size:.78rem">Nessun pagamento</div>';
+    }
+    html += '</div>';
+    // buttons
+    html += '<div class="no-print" style="display:flex;gap:1px;flex-shrink:0">';
+    html += '<button class="del-btn" title="Sotto-voci" onclick="toggleSubItems(' + item.id + ')" style="color:#7fa3b8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>';
+    html += '<button class="del-btn" title="Modifica" onclick="showBudgetEdit(' + item.id + ')" style="color:var(--gold)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>';
+    html += '<button class="del-btn" onclick="deleteBudgetItem(' + item.id + ')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+    html += '</div>';
+    html += '</div>'; // budget-row
+
+    // ── EDIT PANEL (no est/paid — those live in sub-items only) ──
+    html += '<div id="bedit-' + item.id + '" style="display:none;background:var(--cream);border-radius:12px;padding:14px;margin-bottom:8px;border:1px solid var(--border)">';
+    html += '<div style="font-size:.74rem;font-weight:600;color:var(--brown);margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em">Modifica: ' + escHtml(item.label) + '</div>';
+    html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">';
+    html += '<input class="input" id="be-label-' + item.id + '" value="' + escHtml(item.label) + '" placeholder="Nome voce" style="flex:2;min-width:130px"/>';
+    html += '<select class="input" id="be-cat-' + item.id + '" style="flex:1;min-width:110px">';
+    ['Venue','Catering','Abiti','Fotografia','Fiori','Musica','Partecipazioni','Luna di miele','Altro'].forEach(function(cat){
+      html += '<option' + (item.category===cat?' selected':'') + '>' + cat + '</option>';
+    });
+    html += '</select></div>';
+    html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">';
+    html += '<input class="input" id="be-payer-' + item.id + '" placeholder="Responsabile pagamenti" value="' + escHtml(item.payer||'') + '" style="flex:2;min-width:130px"/>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px">';
+    var vv = item.vat;
+    var vat22chk = (vv===22||vv===true||vv==='22') ? 'checked' : '';
+    var vat10chk = (vv===10||vv==='10') ? 'checked' : '';
+    html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--brown-mid)">';
+    html += '<input type="checkbox" id="be-vat22-'+item.id+'" '+vat22chk+' style="width:14px;height:14px;accent-color:var(--brown)"';
+    html += ' onchange="var e=document.getElementById(\'be-vat10-'+item.id+'\');if(this.checked&&e)e.checked=false;"/> IVA 22%</label>';
+    html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--brown-mid)">';
+    html += '<input type="checkbox" id="be-vat10-'+item.id+'" '+vat10chk+' style="width:14px;height:14px;accent-color:var(--brown)"';
+    html += ' onchange="var e=document.getElementById(\'be-vat22-'+item.id+'\');if(this.checked&&e)e.checked=false;"/> IVA 10%</label>';
+    html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.85rem;color:#4a8a4a">';
+    html += '<input type="checkbox" id="be-perhead-'+item.id+'" '+(item.perHead?'checked':'')+' style="width:15px;height:15px;accent-color:#4a8a4a"/> × ospite ('+gc+')</label>';
+    html += '</div>';
+    html += '<div style="display:flex;gap:8px">';
+    html += '<button class="btn" style="font-size:.8rem;padding:7px 14px" onclick="saveBudgetEdit(' + item.id + ')">Salva</button>';
+    html += '<button class="btn-ghost" style="font-size:.8rem;padding:7px 14px" onclick="hideBudgetEdit(' + item.id + ')">Annulla</button>';
+    html += '</div></div>';
+
+    // ── SUB-ITEMS PANEL ──
+    html += '<div id="bsub-' + item.id + '" style="display:none;background:var(--cream);border-radius:12px;padding:12px 14px;margin-bottom:8px;border:1px solid var(--border)">';
+    html += '<div style="font-size:.74rem;font-weight:600;color:var(--brown);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em">Dettaglio voci: ' + escHtml(item.label) + '</div>';
+
+    if (item.subItems && item.subItems.length > 0) {
+      var sumEst = 0, sumPaid = 0;
+      item.subItems.forEach(function(si, sidx) {
+        var seRaw = parseFloat(si.est)||0;
+        // apply perHead multiplier to get the TOTAL preventivo for this sub-item
+        var seTotal = item.perHead ? perHead(seRaw) : seRaw;
+        // apply IVA to the total preventivo
+        var seDisplay = item.vat ? addVat(seTotal, item.vat) : seTotal;
+        var sp = 0;
+        if (si.payments && si.payments.length > 0) {
+          si.payments.forEach(function(p){ sp += parseFloat(p.amount)||0; });
+        } else { sp = parseFloat(si.act)||0; }
+        // accumulate display totals (with IVA+perHead already applied)
+        sumEst  += seDisplay;
+        sumPaid += sp;
+        var res = seDisplay - sp;
+
+        html += '<div style="background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;border:1px solid var(--linen-deep)">';
+        // header
+        html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">';
+        html += '<span style="flex:1;font-size:.88rem;font-weight:600;color:var(--brown-dark)">' + escHtml(si.name) + '</span>';
+        if (seRaw) {
+          // show raw unit price if perHead or show total directly
+          if (item.perHead && seRaw) {
+            html += '<span style="font-size:.76rem;color:#bbb">'+fmt(seRaw)+'/p ×'+gc+'</span>';
+          }
+          html += '<span style="font-size:.78rem;color:#999">Prev: ' + fmt(seDisplay) + '</span>';
+        }
+        if (item.vat && seRaw) html += '<span style="font-size:.68rem;color:var(--brown-mid);background:var(--tan);border-radius:99px;padding:1px 6px">IVA '+item.vat+'% incl.</span>';
+        html += '<span style="font-size:.78rem;font-weight:600;color:' + (res>0?'var(--red)':'var(--green)') + '">' + (sp===0&&seRaw===0?'—':res>0?'Residuo: '+fmt(res):'Saldato \u2714') + '</span>';
+        html += '<button class="del-btn no-print" title="Elimina voce" onclick="deleteSubItem(' + item.id + ',' + sidx + ')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+        html += '</div>';
+
+        // payment history
+        var pmts = si.payments || [];
+        if (pmts.length > 0) {
+          pmts.forEach(function(p, pidx) {
+            var tl = p.type==='saldo'?'Saldo':p.type==='acconto'?'Acconto':'Pagamento';
+            var tc = p.type==='saldo'?'var(--green)':p.type==='acconto'?'var(--gold)':'var(--muted)';
+            html += '<div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px solid var(--linen-deep);flex-wrap:wrap">';
+            html += '<span style="background:'+tc+';color:#fff;border-radius:99px;padding:1px 8px;font-size:.65rem;flex-shrink:0">'+tl+'</span>';
+            html += '<span style="color:var(--green);font-weight:600;font-size:.82rem">'+fmt(parseFloat(p.amount)||0)+'</span>';
+            if (p.who)  html += '<span style="color:var(--gold);font-style:italic;font-size:.75rem">\u2014 '+escHtml(p.who)+'</span>';
+            if (p.note) html += '<span style="color:#aaa;font-size:.75rem">'+escHtml(p.note)+'</span>';
+            if (p.date) html += '<span style="color:#ccc;font-size:.7rem;margin-left:auto">'+escHtml(p.date)+'</span>';
+            html += '<button class="del-btn no-print" onclick="deletePayment('+item.id+','+sidx+','+pidx+')" style="margin-left:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+            html += '</div>';
+          });
+        } else {
+          html += '<div style="font-size:.78rem;color:#ccc;padding:4px 0;border-top:1px solid var(--linen-deep)">Nessun pagamento registrato</div>';
+        }
+
+        // add payment form
+        html += '<div style="margin-top:8px;padding-top:6px;border-top:1px dashed var(--border);display:flex;gap:5px;flex-wrap:wrap;align-items:center">';
+        html += '<select class="input" id="bpay-type-'+item.id+'-'+sidx+'" style="flex:0 0 95px;padding:5px 6px;font-size:.78rem">';
+        html += '<option value="acconto">Acconto</option><option value="saldo">Saldo</option><option value="altro">Altro</option>';
+        html += '</select>';
+        html += '<input class="input" id="bpay-amt-'+item.id+'-'+sidx+'" type="number" min="0" placeholder="\u20ac importo" style="flex:1;min-width:80px;padding:5px 8px;font-size:.82rem"/>';
+        html += '<input class="input" id="bpay-who-'+item.id+'-'+sidx+'" placeholder="Chi paga" style="flex:1;min-width:90px;padding:5px 8px;font-size:.82rem"/>';
+        html += '<input class="input" id="bpay-note-'+item.id+'-'+sidx+'" placeholder="Nota (opz.)" style="flex:1;min-width:80px;padding:5px 8px;font-size:.82rem"/>';
+        html += '<button class="btn" style="font-size:.75rem;padding:5px 10px;flex-shrink:0" onclick="addPayment('+item.id+','+sidx+')">+ Registra</button>';
+        html += '</div>';
+        html += '</div>';
+      });
+
+      // totals — sumEst already includes perHead multiplier AND IVA
+      var sumRes = sumEst - sumPaid;
+      html += '<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:10px 12px;background:var(--tan);border-radius:10px;margin-top:4px">';
+      html += '<span style="font-size:.78rem;font-weight:600;color:var(--brown);flex:1">Totale</span>';
+      var vatNote = item.vat ? ' (IVA '+item.vat+'% incl.)' : '';
+      var phNote  = item.perHead ? ' (×'+gc+' ospiti)' : '';
+      html += '<span style="font-size:.8rem;color:#999">Prev: '+fmt(sumEst)+vatNote+phNote+'</span>';
+      html += '<span style="font-size:.8rem;font-weight:600;color:var(--green)">Pagato: '+fmt(sumPaid)+'</span>';
+      html += '<span style="font-size:.8rem;font-weight:600;color:'+(sumRes>0?'var(--red)':'var(--green)')+'">'+(sumRes>0?'Residuo: '+fmt(sumRes):'Tutto saldato \u2714')+'</span>';
+      html += '</div>';
+    } else {
+      html += '<p style="font-size:.82rem;color:#bbb;margin-bottom:10px">Nessuna sotto-voce. Aggiungine una per dettagliare preventivi e pagamenti.</p>';
+    }
+
+    // add sub-item form
+    html += '<div style="background:#fff;border-radius:8px;padding:10px;border:1px dashed var(--border);margin-top:8px">';
+    html += '<div style="font-size:.68rem;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Nuova voce</div>';
+    html += '<div style="display:flex;gap:6px;flex-wrap:wrap">';
+    html += '<input class="input" id="bsi-name-'+item.id+'" placeholder="Es. Brindisi, Cena, Torta..." style="flex:2;min-width:130px"/>';
+    html += '<input class="input" id="bsi-est-'+item.id+'" type="number" min="0" placeholder="Preventivo \u20ac" style="flex:1;min-width:90px"/>';
+    html += '</div>';
+    html += '<button class="btn" style="font-size:.8rem;padding:6px 14px;margin-top:8px" onclick="addSubItem('+item.id+')">+ Aggiungi voce</button>';
+    html += '</div>';
+    html += '</div>'; // bsub
+
+    html += '</div>'; // brow
+  });
+
+  // ── ADD FORM ──
+  html += '<div class="no-print" style="padding-top:16px;border-top:1px solid var(--tan);margin-top:8px">';
+  html += '<div class="card-title">Aggiungi voce</div>';
+  html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">';
+  html += '<input class="input" id="bi-label" placeholder="Descrizione (es. Fotografo)" style="flex:2;min-width:150px"/>';
+  html += '<select class="input" id="bi-cat" style="flex:1;min-width:120px"><option>Venue</option><option>Catering</option><option>Abiti</option><option>Fotografia</option><option>Fiori</option><option>Musica</option><option>Partecipazioni</option><option>Luna di miele</option><option>Altro</option></select>';
+  html += '</div>';
+  html += '<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px">';
+  html += '<input class="input" id="bi-payer" placeholder="Chi paga?" style="flex:2;min-width:150px"/>';
+  html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;font-size:.82rem;color:var(--brown-mid)"><input type="checkbox" id="bi-vat22" style="width:14px;height:14px;accent-color:var(--brown)" onchange="if(this.checked)document.getElementById(\'bi-vat10\').checked=false"/> IVA 22%</label>';
+  html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;font-size:.82rem;color:var(--brown-mid)"><input type="checkbox" id="bi-vat10" style="width:14px;height:14px;accent-color:var(--brown)" onchange="if(this.checked)document.getElementById(\'bi-vat22\').checked=false"/> IVA 10%</label>';
+  html += '<label style="display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;font-size:.85rem;color:#4a8a4a"><input type="checkbox" id="bi-perhead" style="width:15px;height:15px;accent-color:#4a8a4a"/> \xd7 ospite (' + gc + ')</label>';
+  html += '</div>';
+  html += '<button class="btn" onclick="addBudgetItem()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Aggiungi</button>';
+  html += '</div></div>';
+
+  container.innerHTML = html;
+}
+
+function addBudgetItem() {
+  var label = document.getElementById("bi-label").value.trim();
+  if (!label) { document.getElementById("bi-label").focus(); return; }
+  state.budget.items.push({
+    id:        Date.now(),
+    label:     label,
+    estimated: '',
+    actual:    '',
+    category:  document.getElementById("bi-cat").value,
+    payer:     document.getElementById("bi-payer").value.trim(),
+    vat:       document.getElementById("bi-vat22").checked ? 22 : document.getElementById("bi-vat10").checked ? 10 : false,
+    perHead:   document.getElementById("bi-perhead").checked,
+    subItems:  []
+  });
+  save();
+}
+
+function deleteBudgetItem(id) {
+  delete budgetSelected[id];
+  state.budget.items = state.budget.items.filter(function(i){ return i.id != id; });
+  save();
+}
+
+function toggleSubItems(id) {
+  var panel = document.getElementById('bsub-' + id);
+  if (!panel) return;
+  // close all others
+  document.querySelectorAll('[id^="bsub-"]').forEach(function(el){
+    if (el.id !== 'bsub-' + id) el.style.display = 'none';
+  });
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+}
+
+function addSubItem(itemId) {
+  var nameEl = document.getElementById('bsi-name-' + itemId);
+  var estEl  = document.getElementById('bsi-est-'  + itemId);
+  if (!nameEl || !nameEl.value.trim()) { if(nameEl) nameEl.focus(); return; }
+  var item = state.budget.items.find(function(i){ return i.id == itemId; });
+  if (!item) return;
+  if (!item.subItems) item.subItems = [];
+  item.subItems.push({ name: nameEl.value.trim(), est: estEl ? estEl.value : '', payments: [] });
+  saveQuiet();
+  setTimeout(function(){ toggleSubItems(itemId); }, 30);
+}
+
+function addPayment(itemId, sidx) {
+  var typeEl = document.getElementById('bpay-type-' + itemId + '-' + sidx);
+  var amtEl  = document.getElementById('bpay-amt-'  + itemId + '-' + sidx);
+  var whoEl  = document.getElementById('bpay-who-'  + itemId + '-' + sidx);
+  var noteEl = document.getElementById('bpay-note-' + itemId + '-' + sidx);
+  var amt = parseFloat(amtEl ? amtEl.value : 0) || 0;
+  if (!amt) { if(amtEl) amtEl.focus(); return; }
+  var item = state.budget.items.find(function(i){ return i.id == itemId; });
+  if (!item || !item.subItems[sidx]) return;
+  if (!item.subItems[sidx].payments) item.subItems[sidx].payments = [];
+  item.subItems[sidx].payments.push({
+    type:   typeEl ? typeEl.value : 'altro',
+    amount: amtEl  ? amtEl.value  : '0',
+    who:    whoEl  ? whoEl.value.trim()  : '',
+    note:   noteEl ? noteEl.value.trim() : '',
+    date:   new Date().toLocaleDateString('it-IT')
+  });
+  saveQuiet();
+  setTimeout(function(){ toggleSubItems(itemId); }, 30);
+}
+
+function deletePayment(itemId, sidx, pidx) {
+  var item = state.budget.items.find(function(i){ return i.id == itemId; });
+  if (!item || !item.subItems[sidx] || !item.subItems[sidx].payments) return;
+  item.subItems[sidx].payments.splice(pidx, 1);
+  saveQuiet();
+  setTimeout(function(){ toggleSubItems(itemId); }, 30);
+}
+
+function deleteSubItem(itemId, sidx) {
+  var item = state.budget.items.find(function(i){ return i.id == itemId; });
+  if (!item || !item.subItems) return;
+  item.subItems.splice(sidx, 1);
+  saveQuiet();
+  setTimeout(function(){ toggleSubItems(itemId); }, 30);
+}
+
+function showBudgetEdit(id) {
+  document.querySelectorAll('[id^="bedit-"]').forEach(function(el){ el.style.display = 'none'; });
+  document.querySelectorAll('[id^="bsub-"]').forEach(function(el){ el.style.display = 'none'; });
+  var panel = document.getElementById('bedit-' + id);
+  var row   = document.getElementById('brow-'  + id);
+  if (!panel) return;
+  panel.style.display = 'block';
+  if (row) { var br = row.querySelector('.budget-row'); if (br) br.style.display = 'none'; }
+  var f = document.getElementById('be-est-' + id); if (f) f.focus();
+}
+
+function hideBudgetEdit(id) {
+  var panel = document.getElementById('bedit-' + id);
+  var row   = document.getElementById('brow-'  + id);
+  if (panel) panel.style.display = 'none';
+  if (row) { var br = row.querySelector('.budget-row'); if (br) br.style.display = 'flex'; }
+}
+
+function saveBudgetEdit(id) {
+  // Read ALL values from DOM FIRST, before any re-render
+  var item = state.budget.items.find(function(i){ return i.id == id; });
+  if (!item) return;
+
+  var lblEl  = document.getElementById('be-label-'   + id);
+  var catEl  = document.getElementById('be-cat-'     + id);
+  var payEl  = document.getElementById('be-payer-'   + id);
+  var v22El  = document.getElementById('be-vat22-'   + id);
+  var v10El  = document.getElementById('be-vat10-'   + id);
+  var phEl   = document.getElementById('be-perhead-' + id);
+
+  if (lblEl && lblEl.value.trim()) item.label   = lblEl.value.trim();
+  if (catEl)  item.category = catEl.value;
+  if (payEl)  item.payer    = payEl.value.trim();
+
+  // IVA: read the two checkboxes and store 22, 10, or false
+  if (v22El && v10El) {
+    item.vat = v22El.checked ? 22 : v10El.checked ? 10 : false;
+  }
+
+  if (phEl) item.perHead = phEl.checked;
+
+  saveQuiet();
+}
+
+
+// ── GUESTS ──
+function renderGuests() {
+  var c = document.getElementById("guests-container");
+  var conf = state.guests.filter(function(g) { return g.rsvp === "confirmed"; }).length;
+  var pend = state.guests.filter(function(g) { return g.rsvp === "pending"; }).length;
+  var decl = state.guests.filter(function(g) { return g.rsvp === "declined"; }).length;
+
+  var html = '<div class="card"><div class="guest-stats">';
+  html += '<div class="guest-stat"><div class="val" style="color:var(--brown)">' + state.guests.length + '</div><div class="lbl">Totale</div></div>';
+  html += '<div class="guest-stat"><div class="val" style="color:var(--green)">' + conf + '</div><div class="lbl">Confermati</div></div>';
+  html += '<div class="guest-stat"><div class="val" style="color:var(--yellow)">' + pend + '</div><div class="lbl">In attesa</div></div>';
+  html += '<div class="guest-stat"><div class="val" style="color:var(--red)">' + decl + '</div><div class="lbl">Declinato</div></div>';
+  html += '</div></div>';
+
+  html += '<div class="card no-print"><div class="card-title">Aggiungi ospite</div>';
+  html += '<div style="display:flex;gap:8px;flex-wrap:wrap">';
+  html += '<input class="input" id="g-name" placeholder="Nome ospite" style="flex:2" />';
+  html += '<select class="input" id="g-side" style="flex:1"><option value="sposo">Sposo</option><option value="sposa">Sposa</option><option value="entrambi">Entrambi</option></select>';
+  html += '</div><button class="btn" style="margin-top:10px" onclick="addGuest()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Aggiungi</button></div>';
+
+  html += '<div class="card">';
+  // search + filter bar
+  html += '<div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">';
+  html += '<div style="position:relative;flex:2;min-width:160px">';
+  html += '<svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:#b8966a" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+  html += '<input class="input" id="g-search" placeholder="Cerca per nome..." oninput="filterGuests()" style="padding-left:32px" />';
+  html += '</div>';
+  html += '<select class="input" id="g-filter-rsvp" onchange="filterGuests()" style="flex:1;min-width:110px">';
+  html += '<option value="">Tutti</option><option value="confirmed">Confermati</option><option value="pending">In attesa</option><option value="declined">Declinati</option>';
+  html += '</select>';
+  html += '<select class="input" id="g-filter-side" onchange="filterGuests()" style="flex:1;min-width:110px">';
+  html += '<option value="">Tutti i lati</option><option value="sposo">Sposo</option><option value="sposa">Sposa</option><option value="entrambi">Entrambi</option>';
+  html += '</select>';
+  html += '</div>';
+  // guest list (filterable)
+  if (state.guests.length === 0) html += '<p style="color:#bbb;font-size:.9rem">Nessun ospite ancora.</p>';
+  html += '<div id="g-list">';
+  state.guests.forEach(function(g) {
+    var rsvpLabel = g.rsvp === "confirmed" ? "Confermato" : g.rsvp === "declined" ? "Declinato" : "In attesa";
+    html += '<div class="check-row g-item" data-name="' + escHtml(g.name.toLowerCase()) + '" data-rsvp="' + g.rsvp + '" data-side="' + escHtml(g.side) + '">';
+    html += '<div style="flex:1"><div style="font-size:.9rem;font-weight:600">' + escHtml(g.name) + '</div><div style="font-size:.75rem;color:#aaa">' + escHtml(g.side) + '</div></div>';
+    html += '<button class="rsvp-pill rsvp-' + g.rsvp + ' no-print" onclick="toggleRsvp(' + g.id + ')">' + rsvpLabel + '</button>';
+    html += '<span class="rsvp-pill rsvp-' + g.rsvp + '" style="display:none">' + rsvpLabel + '</span>';
+    html += '<button class="del-btn no-print" onclick="deleteGuest(' + g.id + ')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+    html += '</div>';
+  });
+  html += '</div>';
+  html += '<div id="g-noresults" style="display:none;color:#bbb;font-size:.9rem;padding:8px 0">Nessun risultato.</div>';
+  html += '</div>';
+
+  c.innerHTML = html;
+
+  // restore side selection
+  var sideEl = document.getElementById("g-side");
+  if (sideEl) sideEl.value = lastGuestSide;
+  // enter key on name field
+  var nameEl = document.getElementById("g-name");
+  if (nameEl) {
+    nameEl.addEventListener("keydown", function(e) { if (e.key === "Enter") addGuest(); });
+  }
+}
+
+function filterGuests() {
+  var search = (document.getElementById('g-search') && document.getElementById('g-search').value.toLowerCase()) || '';
+  var rsvpF = (document.getElementById('g-filter-rsvp') && document.getElementById('g-filter-rsvp').value) || '';
+  var sideF = (document.getElementById('g-filter-side') && document.getElementById('g-filter-side').value) || '';
+  var items = document.querySelectorAll('#g-list .g-item');
+  var visible = 0;
+  items.forEach(function(el) {
+    var nameMatch = !search || el.dataset.name.indexOf(search) !== -1;
+    var rsvpMatch = !rsvpF || el.dataset.rsvp === rsvpF;
+    var sideMatch = !sideF || el.dataset.side === sideF;
+    var show = nameMatch && rsvpMatch && sideMatch;
+    el.style.display = show ? 'flex' : 'none';
+    if (show) visible++;
+  });
+  var noRes = document.getElementById('g-noresults');
+  if (noRes) noRes.style.display = (items.length > 0 && visible === 0) ? 'block' : 'none';
+}
+
+function addGuest() {
+  var nameEl = document.getElementById("g-name");
+  var sideEl = document.getElementById("g-side");
+  if (!nameEl || !nameEl.value.trim()) return;
+  lastGuestSide = sideEl ? sideEl.value : "sposo";
+  state.guests.push({id: Date.now(), name: nameEl.value.trim(), side: lastGuestSide, rsvp: "pending"});
+  save();
+}
+function toggleRsvp(id) {
+  var map = {pending:"confirmed", confirmed:"declined", declined:"pending"};
+  var g = state.guests.find(function(g) { return g.id === id; });
+  if (g) g.rsvp = map[g.rsvp];
+  save();
+}
+function deleteGuest(id) {
+  state.guests = state.guests.filter(function(g) { return g.id !== id; });
+  save();
+}
+
+// ── TABLES ──
+function renderTables() {
+  if (!state.tables) state.tables = [];
+  var grid = document.getElementById("tables-grid");
+  var statsDiv = document.getElementById("tables-stats");
+  var unassignedList = document.getElementById("unassigned-list");
+  var unassignedCount = document.getElementById("unassigned-count");
+  if (!grid) return;
+
+  var assignedIds = {};
+  state.tables.forEach(function(t) {
+    (t.seats||[]).forEach(function(s){ if(s.guestId) assignedIds[s.guestId]=true; });
+  });
+
+  var unassigned = state.guests.filter(function(g){ return !assignedIds[g.id]; });
+  if (unassignedList) {
+    unassignedList.innerHTML = unassigned.length === 0
+      ? '<span style="color:#bbb;font-size:.85rem;font-style:italic">Tutti gli ospiti sono assegnati ♡</span>'
+      : unassigned.map(function(g){
+          return '<button class="unassigned-chip" onclick="showAssignModal('+g.id+')">'+escHtml(g.name)+'</button>';
+        }).join('');
+    if (unassignedCount) unassignedCount.textContent = unassigned.length > 0 ? unassigned.length+' da assegnare' : '';
+  }
+
+  var totalSeats = state.tables.reduce(function(s,t){ return s+(t.capacity||0); },0);
+  var usedSeats  = state.tables.reduce(function(s,t){ return s+(t.seats||[]).filter(function(s){ return s.guestId; }).length; },0);
+  if (statsDiv) {
+    statsDiv.innerHTML =
+      statBox(state.tables.length,"Tavoli") +
+      statBox(totalSeats,"Posti totali") +
+      statBox(usedSeats,"Assegnati") +
+      statBox(state.guests.length-usedSeats,"Da assegnare");
+  }
+
+  // override grid layout for long tables
+  var hasLong = state.tables.some(function(t){ return t.type==='long'||t.type==='imperial'; });
+  grid.style.gridTemplateColumns = hasLong ? '1fr' : 'repeat(auto-fill,minmax(280px,1fr))';
+
+  grid.innerHTML = "";
+  state.tables.forEach(function(t) {
+    var seats = t.seats || [];
+    var used  = seats.filter(function(s){ return s.guestId; }).length;
+    var cap   = t.capacity || seats.length;
+    var type  = t.type || 'round';
+    var typeLabel = type==='long' ? 'Tavolata unica' : type==='imperial' ? 'Imperiale' : 'Rotondo/Rettangolare';
+    var div = document.createElement("div");
+    div.className = "table-card";
+
+    var bodyHtml = '';
+
+    if (type === 'round') {
+      // ── classic list view ──
+      var seatsHtml = '';
+      for (var i=0; i<cap; i++) {
+        var seat  = seats[i] || {guestId:null};
+        var guest = seat.guestId ? state.guests.find(function(g){ return g.id===seat.guestId; }) : null;
+        seatsHtml += '<div class="seat-row"><div class="seat-num">'+(i+1)+'</div>';
+        if (guest) {
+          seatsHtml += '<div class="seat-name">'+escHtml(guest.name)+'</div>' +
+            '<button class="seat-del no-print" onclick="removeSeat('+t.id+','+i+')" title="Rimuovi">' +
+              '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+        } else {
+          seatsHtml += '<button class="seat-empty no-print" style="flex:1;background:none;border:none;text-align:left;cursor:pointer;color:#ccc;font-size:.82rem;font-style:italic;padding:0" onclick="showAssignSeat('+t.id+','+i+')">+ Assegna ospite</button>';
+        }
+        seatsHtml += '</div>';
+      }
+      bodyHtml = '<div class="table-card-body">'+seatsHtml+'</div>';
+
+    } else {
+      // ── long / imperial: chip layout ──
+      var half = Math.ceil(cap/2);
+      var isImperial = (type === 'imperial');
+      // side A = posti 0..half-1, side B = posti half..cap-1
+      function chipRow(from, to, sideLabel) {
+        var row = '<div class="long-side-label">'+sideLabel+'</div><div class="long-seats-row">';
+        for (var i=from; i<to; i++) {
+          var seat  = seats[i] || {guestId:null};
+          var guest = seat.guestId ? state.guests.find(function(g){ return g.id===seat.guestId; }) : null;
+          if (guest) {
+            row += '<div class="long-seat-chip occupied" onclick="showAssignSeat('+t.id+','+i+')" title="Clicca per cambiare">' +
+              '<span class="lsc-num">'+(i+1)+'</span>'+escHtml(guest.name)+'</div>';
+          } else {
+            row += '<button class="long-seat-chip no-print" onclick="showAssignSeat('+t.id+','+i+')">' +
+              '<span class="lsc-num">'+(i+1)+'</span><span style="color:#bbb;font-style:italic;font-size:.78rem">libero</span></button>';
+          }
+        }
+        row += '</div>';
+        return row;
+      }
+      bodyHtml = '<div class="long-table-wrap">';
+      if (isImperial) {
+        bodyHtml += chipRow(0, half, 'Lato A');
+        bodyHtml += '<hr class="imperial-divider" />';
+        bodyHtml += chipRow(half, cap, 'Lato B');
+      } else {
+        bodyHtml += chipRow(0, cap, 'Posti in sequenza');
+      }
+      bodyHtml += '</div>';
+    }
+
+    div.innerHTML =
+      '<div class="table-card-header">' +
+        '<div>' +
+          '<div class="t-name">'+escHtml(t.name)+'<span class="t-type-badge">'+typeLabel+'</span></div>' +
+          '<div class="t-meta">'+used+' / '+cap+' posti occupati</div>' +
+        '</div>' +
+        '<button onclick="deleteTable('+t.id+')" class="no-print" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#f5ede0;border-radius:8px;padding:4px 8px;font-size:.7rem;cursor:pointer">Elimina</button>' +
+      '</div>' + bodyHtml;
+    grid.appendChild(div);
+  });
+}
+
+function statBox(val, lbl) {
+  return '<div class="t-stat"><div class="val">'+val+'</div><div class="lbl">'+lbl+'</div></div>';
+}
+
+function addTable() {
+  var name = document.getElementById("t-name").value.trim();
+  var cap  = parseInt(document.getElementById("t-seats").value) || 8;
+  var typeEl = document.querySelector('input[name="t-type"]:checked');
+  var type = typeEl ? typeEl.value : 'round';
+  if (!name) { document.getElementById("t-name").focus(); return; }
+  var seats = [];
+  for (var i=0; i<cap; i++) seats.push({guestId:null});
+  state.tables.push({id:Date.now(), name:name, capacity:cap, type:type, seats:seats});
+  document.getElementById("t-name").value = "";
+  document.getElementById("t-seats").value = "";
+  save();
+}
+
+function deleteTable(id) {
+  state.tables = state.tables.filter(function(t){ return t.id!==id; });
+  save();
+}
+
+function removeSeat(tableId, seatIdx) {
+  var t = state.tables.find(function(t){ return t.id===tableId; });
+  if (t && t.seats[seatIdx]) { t.seats[seatIdx].guestId=null; save(); }
+}
+
+// assign modal state
+var _assignTarget = null; // {type:'guest'|'seat', guestId, tableId, seatIdx}
+
+function showAssignModal(guestId) {
+  _assignTarget = {type:'guest', guestId: guestId};
+  openAssignModal(guestId, null, null);
+}
+
+function showAssignSeat(tableId, seatIdx) {
+  _assignTarget = {type:'seat', tableId: tableId, seatIdx: seatIdx};
+  openAssignModal(null, tableId, seatIdx);
+}
+
+function openAssignModal(guestId, tableId, seatIdx) {
+  var modal = document.getElementById("assign-modal");
+  var title = document.getElementById("assign-modal-title");
+  var list  = document.getElementById("assign-modal-list");
+  if (!modal) return;
+
+  if (guestId) {
+    // picking a table/seat for a guest
+    var guest = state.guests.find(function(g){ return g.id === guestId; });
+    title.textContent = 'Assegna ' + (guest ? guest.name : '') + ' a un tavolo';
+    var html = '';
+    state.tables.forEach(function(t) {
+      var emptySeats = (t.seats || []).map(function(s,i){ return {s:s,i:i}; }).filter(function(x){ return !x.s.guestId; });
+      if (emptySeats.length === 0) return;
+      html += '<div style="margin-bottom:14px">';
+      html += '<div style="font-size:.8rem;font-weight:600;color:var(--brown);margin-bottom:6px">' + escHtml(t.name) + ' (' + emptySeats.length + ' posti liberi)</div>';
+      emptySeats.forEach(function(x) {
+        html += '<button class="unassigned-pill" style="margin:2px" onclick="doAssign(' + guestId + ',' + t.id + ',' + x.i + ')">Posto ' + (x.i+1) + '</button>';
+      });
+      html += '</div>';
+    });
+    list.innerHTML = html || '<p style="color:#bbb;font-size:.85rem">Nessun posto libero disponibile. Crea un nuovo tavolo.</p>';
+  } else {
+    // picking a guest for a seat
+    var assigned = {};
+    state.tables.forEach(function(t){ (t.seats||[]).forEach(function(s){ if(s.guestId) assigned[s.guestId]=true; }); });
+    var avail = state.guests.filter(function(g){ return !assigned[g.id]; });
+    title.textContent = 'Scegli ospite per questo posto';
+    list.innerHTML = avail.length === 0
+      ? '<p style="color:#bbb;font-size:.85rem">Tutti gli ospiti sono già assegnati.</p>'
+      : avail.map(function(g) {
+          return '<button class="unassigned-pill" style="margin:2px" onclick="doAssign(' + g.id + ',' + tableId + ',' + seatIdx + ')">' + escHtml(g.name) + '</button>';
+        }).join('');
+  }
+  modal.style.display = "flex";
+}
+
+function doAssign(guestId, tableId, seatIdx) {
+  var t = state.tables.find(function(t){ return t.id === tableId; });
+  if (!t) return;
+  if (!t.seats[seatIdx]) t.seats[seatIdx] = {};
+  // remove guest from any previous seat
+  state.tables.forEach(function(tbl) {
+    (tbl.seats || []).forEach(function(s) {
+      if (s.guestId === guestId) s.guestId = null;
+    });
+  });
+  t.seats[seatIdx].guestId = guestId;
+  closeAssignModal();
+  save();
+}
+
+function closeAssignModal() {
+  var m = document.getElementById("assign-modal");
+  if (m) m.style.display = "none";
+  _assignTarget = null;
+}
+
+// ── TIMELINE ──
+function renderTimeline() {
+  var container = document.getElementById("timeline-container");
+  var html = '<div class="card"><div class="card-title">Tappe del matrimonio</div>';
+  state.timeline.forEach(function(t, i) {
+    var isEdit = (window._tlEditId === t.id);
+    html += '<div class="timeline-item"><div class="tl-connector">';
+    html += '<div class="tl-dot '+(t.done?'done':'')+'" onclick="toggleTimeline('+t.id+')">';
+    html += '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>';
+    if (i < state.timeline.length-1) html += '<div class="tl-line '+(t.done?'done':'')+'"></div>';
+    html += '</div>';
+    if (isEdit) {
+      // inline edit mode
+      html += '<div style="flex:1;background:var(--cream);border-radius:10px;padding:10px;border:1px solid var(--border)">';
+      html += '<div style="display:flex;gap:6px;margin-bottom:6px">';
+      html += '<input class="input" id="tl-months-'+t.id+'" value="'+escHtml(t.months)+'" placeholder="Es. 6-8 mesi prima" style="flex:1;font-size:.8rem"/>';
+      html += '</div>';
+      html += '<div style="display:flex;gap:6px">';
+      html += '<input class="input" id="tl-label-'+t.id+'" value="'+escHtml(t.label)+'" placeholder="Descrizione tappa" style="flex:1;font-size:.85rem"/>';
+      html += '</div>';
+      html += '<div style="display:flex;gap:6px;margin-top:8px">';
+      html += '<button class="btn" style="font-size:.78rem;padding:5px 12px" onclick="saveTimeline('+t.id+')">Salva</button>';
+      html += '<button class="btn-ghost" style="font-size:.78rem;padding:5px 10px" onclick="cancelEditTimeline()">Annulla</button>';
+      html += '</div></div>';
+    } else {
+      html += '<div style="flex:1"><div class="tl-months">'+escHtml(t.months)+'</div>';
+      html += '<div class="tl-label" style="'+(t.done?'text-decoration:line-through;color:#bbb;':'')+(t.id===9?'font-weight:700':'')+'">';
+      html += escHtml(t.label)+'</div></div>';
+      html += '<div class="no-print" style="display:flex;gap:2px;flex-shrink:0">';
+      html += '<button class="del-btn" onclick="editTimeline('+t.id+')" style="color:var(--gold)" title="Modifica"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>';
+      html += '<button class="del-btn" onclick="deleteTimeline('+t.id+')" title="Elimina"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+  // add new tappa
+  html += '<div class="no-print" style="padding-top:14px;border-top:1px solid var(--tan);margin-top:4px">';
+  html += '<div style="font-size:.75rem;font-weight:600;color:var(--brown);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Aggiungi tappa</div>';
+  html += '<div style="display:flex;gap:6px;flex-wrap:wrap">';
+  html += '<input class="input" id="tl-new-months" placeholder="Quando (es. 3 mesi prima)" style="flex:1;min-width:140px"/>';
+  html += '<input class="input" id="tl-new-label" placeholder="Descrizione tappa" style="flex:2;min-width:160px"/>';
+  html += '<button class="btn" onclick="addTimeline()" style="flex-shrink:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>';
+  html += '</div></div>';
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+window._tlEditId = null;
+function editTimeline(id)   { window._tlEditId = id; renderTimeline(); setTimeout(function(){ var el=document.getElementById('tl-label-'+id); if(el) el.focus(); },50); }
+function cancelEditTimeline(){ window._tlEditId = null; renderTimeline(); }
+function saveTimeline(id) {
+  var t = state.timeline.find(function(t){ return t.id===id; });
+  if (!t) return;
+  var ml = document.getElementById('tl-months-'+id);
+  var ll = document.getElementById('tl-label-'+id);
+  if (ml) t.months = ml.value.trim();
+  if (ll && ll.value.trim()) t.label = ll.value.trim();
+  window._tlEditId = null;
+  save();
+}
+function toggleTimeline(id) {
+  var t = state.timeline.find(function(t){ return t.id===id; });
+  if (t) t.done = !t.done;
+  save();
+}
+function addTimeline() {
+  var ml = document.getElementById('tl-new-months');
+  var ll = document.getElementById('tl-new-label');
+  if (!ll||!ll.value.trim()) { if(ll) ll.focus(); return; }
+  state.timeline.push({id:Date.now(), months:(ml?ml.value.trim():''), label:ll.value.trim(), done:false});
+  save();
+}
+function deleteTimeline(id) {
+  state.timeline = state.timeline.filter(function(t){ return t.id!==id; });
+  save();
+}
+
+// ── NOTES ──
+function renderNotes() {
+  var c = document.getElementById("notes-container");
+  if (state.notes.length === 0) {
+    c.innerHTML = '<p style="color:#bbb;text-align:center;padding:20px">Nessuna nota ancora.</p>';
+    return;
+  }
+  var sorted = state.notes.slice().reverse();
+  var html = "";
+  sorted.forEach(function(n) {
+    html += '<div class="note-card"><div style="font-size:.92rem;line-height:1.65;white-space:pre-wrap">' + escHtml(n.text) + '</div>';
+    html += '<div class="note-footer"><div class="note-author">- ' + escHtml(n.author || "anonimo") + ' - ' + escHtml(n.at) + '</div>';
+    html += '<button class="del-btn no-print" onclick="deleteNote(' + n.id + ')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>';
+    html += '</div></div>';
+  });
+  c.innerHTML = html;
+}
+
+function addNote() {
+  var el = document.getElementById("new-note");
+  if (!el || !el.value.trim()) return;
+  state.notes.push({id: Date.now(), text: el.value.trim(), author: myName, at: new Date().toLocaleDateString("it-IT")});
+  el.value = "";
+  save();
+}
+function deleteNote(id) {
+  state.notes = state.notes.filter(function(n) { return n.id !== id; });
+  save();
+}
+
+// ── SETTINGS ──
+function loadSettings() {
+  var sn = document.getElementById("s-myname"); if (sn) sn.value = myName;
+  var sp1 = document.getElementById("s-p1"); if (sp1) sp1.value = state.coupleNames.p1;
+  var sp2 = document.getElementById("s-p2"); if (sp2) sp2.value = state.coupleNames.p2;
+  var sd = document.getElementById("s-date"); if (sd) sd.value = state.weddingDate || "";
+  var sb = document.getElementById("s-budget"); if (sb) sb.value = state.budget.total || "";
+}
+function updateCoupleNames() {
+  state.coupleNames.p1 = document.getElementById("s-p1").value || "Sposo";
+  state.coupleNames.p2 = document.getElementById("s-p2").value || "Sposa";
+  save();
+}
+function updateWeddingDate() { state.weddingDate = document.getElementById("s-date").value; save(); }
+function updateBudgetTotal() { state.budget.total = parseFloat(document.getElementById("s-budget").value) || 0; save(); }
+
+// ── GITHUB SYNC ──────────────────────────────────────────────────────────────
+var GH = {
+  owner: "SFloridia",
+  repo:  "wedding-planner",
+  token: "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",
+  file:  "planner-data.json",
+  sha:   null
+};
+
+function ghUrl() {
+  return "https://api.github.com/repos/" + GH.owner + "/" + GH.repo + "/contents/" + GH.file;
+}
+function ghHdr() {
+  return {
+    "Authorization": "Bearer " + GH.token,
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Content-Type": "application/json"
+  };
+}
+
+function syncSave() {
+  var btn = document.getElementById("gh-save-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "Salvataggio..."; }
+  fetch(ghUrl(), { method: "GET", headers: ghHdr() })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(existing) {
+      var sha     = existing && existing.sha ? existing.sha : null;
+      var json    = JSON.stringify(state, null, 2);
+      var encoded = btoa(unescape(encodeURIComponent(json)));
+      var body    = { message: "Aggiornamento planner " + new Date().toLocaleString("it-IT"), content: encoded };
+      if (sha) body.sha = sha;
+      return fetch(ghUrl(), { method: "PUT", headers: ghHdr(), body: JSON.stringify(body) });
+    })
+    .then(function(r) {
+      if (!r.ok) return r.text().then(function(t){ throw new Error("HTTP " + r.status + " " + t); });
+      return r.json();
+    })
+    .then(function(data) {
+      if (data.content && data.content.sha) GH.sha = data.content.sha;
+      trySetStorage("wp_data", JSON.stringify(state));
+      showToast("Salvato su GitHub ✓");
+      if (btn) { btn.disabled = false; btn.textContent = "Salva"; }
+    })
+    .catch(function(err) {
+      console.error("syncSave:", err);
+      showToast("Errore salvataggio: " + err.message);
+      if (btn) { btn.disabled = false; btn.textContent = "Salva"; }
+    });
+}
+
+function syncLoad() {
+  var btn = document.getElementById("gh-load-btn");
+  if (btn) { btn.disabled = true; btn.textContent = "Caricamento..."; }
+  fetch(ghUrl() + "?ref=main&nocache=" + Date.now(), { method: "GET", headers: ghHdr() })
+    .then(function(r) {
+      if (r.status === 404) throw new Error("NESSUN_FILE");
+      if (!r.ok) return r.text().then(function(t){ throw new Error("HTTP " + r.status + " " + t); });
+      return r.json();
+    })
+    .then(function(data) {
+      GH.sha = data.sha;
+      var json = decodeURIComponent(escape(atob(data.content.replace(/[\r\n]/g,""))));
+      var imported = JSON.parse(json);
+      if (!imported.checklist || !imported.coupleNames) throw new Error("File non valido");
+      state = imported;
+      trySetStorage("wp_data", JSON.stringify(state));
+      loadSettings();
+      renderAll();
+      showToast("Sincronizzato da GitHub ✓");
+      if (btn) { btn.disabled = false; btn.textContent = "Carica"; }
+    })
+    .catch(function(err) {
+      console.error("syncLoad:", err);
+      showToast(err.message === "NESSUN_FILE" ? "Nessun dato su GitHub — salva prima." : "Errore: " + err.message);
+      if (btn) { btn.disabled = false; btn.textContent = "Carica"; }
+    });
+}
+
+function ghFetchSha() {
+  fetch(ghUrl(), { method: "GET", headers: ghHdr() })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) { if (d && d.sha) GH.sha = d.sha; })
+    .catch(function() {});
+}
+
+// ── LOCAL BACKUP (fallback) ───────────────────────────────────────────────────
+function exportData() {
+  var json = JSON.stringify(state, null, 2);
+  var blob = new Blob([json], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  var names = (state.coupleNames.p1 + "_" + state.coupleNames.p2).replace(/\s+/g,"_");
+  a.download = "wedding_planner_" + names + "_" + new Date().toISOString().slice(0,10) + ".json";
+  a.click();
+  showToast("Backup locale scaricato!");
+}
+function importData(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (imported.checklist && imported.coupleNames) {
+        state = imported;
+        trySetStorage("wp_data", JSON.stringify(state));
+        loadSettings();
+        renderAll();
+        showToast("Dati importati!");
+      } else { alert("File non valido."); }
+    } catch(err) { alert("Errore nella lettura del file."); }
+  };
+  reader.readAsText(file);
+  event.target.value = "";
+}
+
+// ── PDF ──
+function printSection(panelId, title) {
+  var panels = document.querySelectorAll(".tab-panel");
+  var wasActive = {};
+  panels.forEach(function(p) { wasActive[p.id] = p.classList.contains("active"); p.classList.remove("active"); });
+  var target = document.getElementById(panelId);
+  target.classList.add("active");
+  var titleEl = document.createElement("div");
+  titleEl.className = "section-print-title";
+  titleEl.textContent = title + " — " + state.coupleNames.p1 + " & " + state.coupleNames.p2;
+  target.prepend(titleEl);
+  window.print();
+  titleEl.remove();
+  panels.forEach(function(p) { if (wasActive[p.id]) p.classList.add("active"); });
+}
+
+function printAll() {
+  document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.add("active"); });
+  var titleEl = document.createElement("div");
+  titleEl.className = "section-print-title";
+  titleEl.style.fontSize = "1.8rem";
+  titleEl.textContent = "Wedding Planner — " + state.coupleNames.p1 + " & " + state.coupleNames.p2;
+  document.getElementById("content").prepend(titleEl);
+  window.print();
+  titleEl.remove();
+  document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.remove("active"); });
+  document.getElementById("panel-checklist").classList.add("active");
+}
+
+// ─── EXCEL EXPORT: BUDGET (pagamenti) ─────────────────────────────────────────
+function exportBudgetXLSX() {
+  if (typeof XLSX === 'undefined') { alert('Libreria XLSX non caricata. Verifica la connessione e ricarica la pagina.'); return; }
+  var wb  = XLSX.utils.book_new();
+  var p1  = (state.coupleNames&&state.coupleNames.p1)||'Sposo';
+  var p2  = (state.coupleNames&&state.coupleNames.p2)||'Sposa';
+  var cpl = p1+' & '+p2;
+  var td  = new Date().toLocaleDateString('it-IT');
+
+  var grandEst=0, grandPaid=0;
+  (state.budget.items||[]).forEach(function(i){ var t=itemTotals(i); grandEst+=t.est; grandPaid+=t.paid; });
+  var budgetTot = parseFloat(state.budget.total)||0;
+
+  var rows = [];
+  rows.push([cpl+' — Riepilogo Pagamenti']);
+  rows.push(['Esportato il: '+td]);
+  rows.push([]);
+  rows.push(['QUADRO ECONOMICO','']);
+  rows.push(['Budget allocato',       budgetTot]);
+  rows.push(['Totale preventivato',   grandEst]);
+  rows.push(['Totale pagato',         grandPaid]);
+  rows.push(['Ancora da pagare',      grandEst-grandPaid]);
+  rows.push(['Disponibile su budget', budgetTot-grandEst]);
+  rows.push(['% budget pagato',       budgetTot?Math.round(grandPaid/budgetTot*100)+'%':'—']);
+  rows.push([]);
+  rows.push(['DETTAGLIO PAGAMENTI','','','','','','','']);
+  rows.push(['Voce','Categoria','Sotto-voce','Tipo','Importo pagato','Chi ha pagato','Nota','Data']);
+
+  var totalePagamenti = 0;
+  (state.budget.items||[]).forEach(function(item) {
+    var t = itemTotals(item);
+    if (item.subItems && item.subItems.length > 0) {
+      var isFirstSub = true;
+      item.subItems.forEach(function(si) {
+        var pmts = si.payments&&si.payments.length ? si.payments : (parseFloat(si.act)>0?[{type:'pagamento',amount:si.act,who:'',note:'',date:''}]:[]);
+        if (!pmts.length) return;
+        pmts.forEach(function(p,pi) {
+          var amt=parseFloat(p.amount)||0; totalePagamenti+=amt;
+          rows.push([
+            (isFirstSub&&pi===0)?item.label:'',
+            (isFirstSub&&pi===0)?(item.category||''):'',
+            pi===0?si.name:'',
+            p.type==='acconto'?'Acconto':p.type==='saldo'?'Saldo':'Pagamento',
+            amt, p.who||'', p.note||'', p.date||''
+          ]);
+          isFirstSub=false;
+        });
+      });
+      var siPaid=0;
+      item.subItems.forEach(function(si){ if(si.payments&&si.payments.length) si.payments.forEach(function(p){ siPaid+=parseFloat(p.amount)||0; }); else siPaid+=parseFloat(si.act)||0; });
+      rows.push(['└ Totale '+item.label, item.category||'','','', siPaid, item.payer||'', 'Prev: '+fmt(t.est)+' • Residuo: '+fmt(t.est-siPaid), '']);
+      rows.push([]);
+    } else {
+      var paid=parseFloat(item.actual)||0;
+      if (!paid) return;
+      totalePagamenti+=paid;
+      rows.push([item.label, item.category||'','','Pagamento', paid, item.payer||'', 'Prev: '+fmt(t.est)+' • Residuo: '+fmt(t.est-paid), '']);
+    }
+  });
+  rows.push([]);
+  rows.push(['TOTALE PAGAMENTI','','','',totalePagamenti,'','','']);
+  rows.push(['Budget allocato','','','',budgetTot,'','','']);
+  rows.push(['Residuo da pagare','','','',grandEst-grandPaid,'','','']);
+  rows.push(['Disponibile','','','',budgetTot-grandEst,'','','']);
+
+  var ws=XLSX.utils.aoa_to_sheet(rows);
+  ws['!cols']=[{wch:28},{wch:14},{wch:22},{wch:12},{wch:16},{wch:20},{wch:30},{wch:12}];
+  XLSX.utils.book_append_sheet(wb,ws,'Pagamenti');
+
+  XLSX.writeFile(wb,'Pagamenti_'+p1.replace(/\s/g,'')+'_'+p2.replace(/\s/g,'')+'_'+td.replace(/\//g,'-')+'.xlsx');
+}
+
+// ─── EXCEL EXPORT: TAVOLI ──────────────────────────────────────────────────────
+function exportTablesDoc() {
+  if (typeof XLSX === 'undefined') { alert('Libreria XLSX non caricata. Verifica la connessione e ricarica la pagina.'); return; }
+  var wb  = XLSX.utils.book_new();
+  var p1  = (state.coupleNames&&state.coupleNames.p1)||'Sposo';
+  var p2  = (state.coupleNames&&state.coupleNames.p2)||'Sposa';
+  var cpl = p1+' & '+p2;
+  var td  = new Date().toLocaleDateString('it-IT');
+  function tl(t){ return t==='long'?'Tavolata unica':t==='imperial'?'Imperiale':'Rotondo/Rettangolare'; }
+
+  var assignedIds={};
+  (state.tables||[]).forEach(function(t){ (t.seats||[]).forEach(function(s){ if(s.guestId) assignedIds[s.guestId]=true; }); });
+  var unasgn = (state.guests||[]).filter(function(g){ return !assignedIds[g.id]; });
+  var totSeats = (state.tables||[]).reduce(function(s,t){ return s+(t.capacity||0); },0);
+  var totUsed  = (state.tables||[]).reduce(function(s,t){ return s+(t.seats||[]).filter(function(s){ return s.guestId; }).length; },0);
+
+  // ── Sheet 1: Mappa Tavoli ─────────────────────────────────────────────────
+  var map = [[cpl+' — Disposizione Tavoli'],['Generato il: '+td],[]];
+  (state.tables||[]).forEach(function(t) {
+    var seats=t.seats||[]; var cap=t.capacity||seats.length;
+    var used=seats.filter(function(s){ return s.guestId; }).length;
+    map.push(['TAVOLO: '+t.name.toUpperCase(), tl(t.type||'round'), 'Posti: '+cap, 'Occupati: '+used, 'Liberi: '+(cap-used)]);
+    map.push(['Posto','Ospite','Lato','RSVP','']);
+    for (var i=0;i<cap;i++) {
+      var s=seats[i]||{guestId:null};
+      var g=s.guestId?(state.guests||[]).find(function(g){ return g.id===s.guestId; }):null;
+      var rv=g?(g.rsvp==='confirmed'?'Confermato':g.rsvp==='declined'?'Declinato':'In attesa'):'';
+      map.push([i+1, g?g.name:'— libero —', g?g.side||'':'', rv, '']);
+    }
+    map.push([]);
+  });
+  var ws1=XLSX.utils.aoa_to_sheet(map);
+  ws1['!cols']=[{wch:8},{wch:32},{wch:12},{wch:14},{wch:10}];
+  XLSX.utils.book_append_sheet(wb,ws1,'Mappa Tavoli');
+
+  // ── Sheet 2: Lista ospiti per tavolo ──────────────────────────────────────
+  var lst=[['Ospite','Lato','Tavolo','Posto N.','RSVP']];
+  (state.tables||[]).forEach(function(t) {
+    (t.seats||[]).forEach(function(s,idx) {
+      if(!s.guestId) return;
+      var g=(state.guests||[]).find(function(g){ return g.id===s.guestId; });
+      if(!g) return;
+      lst.push([g.name, g.side||'', t.name, idx+1, g.rsvp==='confirmed'?'Confermato':g.rsvp==='declined'?'Declinato':'In attesa']);
+    });
+  });
+  if (unasgn.length) {
+    lst.push([]); lst.push(['NON ASSEGNATI','','','','']);
+    unasgn.forEach(function(g){ lst.push([g.name, g.side||'', '— non assegnato —', '', g.rsvp==='confirmed'?'Confermato':g.rsvp==='declined'?'Declinato':'In attesa']); });
+  }
+  var ws2=XLSX.utils.aoa_to_sheet(lst);
+  ws2['!cols']=[{wch:30},{wch:12},{wch:26},{wch:10},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,ws2,'Ospiti per tavolo');
+
+  // ── Sheet 3: Checklist sala ────────────────────────────────────────────────
+  var chk=[
+    [cpl+' — Checklist Sala per il Coordinatore'],['Generato il: '+td],[],
+    ['NUMERI CHIAVE',''],
+    ['Tavoli totali',          (state.tables||[]).length],
+    ['Posti totali',           totSeats],
+    ['Ospiti assegnati',       totUsed],
+    ['Ospiti NON assegnati',   unasgn.length],
+    ['Ospiti totali',          (state.guests||[]).length],
+    [],
+    ['CHECKLIST PRE-EVENTO','Fatto?'],
+    ['Verificare lista nomi su ogni tavolo',''],
+    ['Stampare segnaposto con nomi',''],
+    ['Stampare numeri dei tavoli',''],
+    ['Confermare numero di posti fisici per tavolo',''],
+    ['Controllare esigenze alimentari speciali',''],
+    ['Posizionare menù su ogni coperto',''],
+    ['Controllare posti disabili o accesso speciale',''],
+    [],
+    ['CHECKLIST GIORNO DEL MATRIMONIO','Fatto?'],
+    ['Accogliere gli ospiti e indirizzarli al tavolo',''],
+    ['Gestire eventuali cambio posto dell\'ultimo minuto',''],
+    ['Verificare assenza di ospiti non previsti',''],
+    ['Segnalare al catering eventuali variazioni',''],
+  ];
+  if (unasgn.length) {
+    chk.push([]); chk.push(['⚠️ ATTENZIONE: '+unasgn.length+' ospiti senza posto assegnato!','']);
+    unasgn.forEach(function(g){ chk.push(['→ '+g.name+' ('+g.side+')', g.rsvp==='confirmed'?'⚠️ Confermato - MANCA POSTO':'']); });
+  }
+  var ws3=XLSX.utils.aoa_to_sheet(chk);
+  ws3['!cols']=[{wch:44},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,ws3,'Checklist Sala');
+
+  XLSX.writeFile(wb,'Tavoli_'+p1.replace(/\s/g,'')+'_'+p2.replace(/\s/g,'')+'_'+td.replace(/\//g,'-')+'.xlsx');
+}
+
+</script>
+</body>
+</html>
